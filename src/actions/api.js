@@ -43,12 +43,10 @@ export async function getEngineer() {
 
 export async function CheckClientLogin() {
     
-    
+
     const APIURL = `${process.env.REACT_APP_SERVER_API}/geotechnical/checkclientid`;
     console.log(APIURL)
-    return fetch(APIURL, {
-        method: 'get',
-        credentials: 'same-origin'})
+    return fetch(APIURL)
         .then(resp => {
             if (!resp.ok) {
                 if (resp.status >= 400 && resp.status < 500) {
