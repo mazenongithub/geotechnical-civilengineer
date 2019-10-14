@@ -43,7 +43,7 @@ export async function getEngineer() {
 
 export async function CheckClientLogin() {
     
-    const APIURL = `${process.env.REACT_APP_SERVER_API}/checkclientid`;
+    const APIURL = `https://api.civilengineer.io/geotechnical/checkclientid`;
     console.log(APIURL)
     return fetch(APIURL, {
         method: 'get',
@@ -203,6 +203,7 @@ export async function CheckClientID(values) {
         })
 }
 export async function getClient(clientid) {
+                                  
     const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/getclient`;
 console.log(APIURL)
     return fetch(APIURL)
