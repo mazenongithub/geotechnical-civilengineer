@@ -1,0 +1,102 @@
+.schedule-container {
+    display: grid;
+    grid-row-gap: 15px;
+    grid-column-gap: 15px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.align-right {
+    text-align: right;
+}
+
+.span-amount {
+    margin-right: 10%;
+}
+
+.schedule-title-row,
+.item-b,
+.item-a {
+    grid-column-end: span 2;
+}
+
+.schedule-container {
+    grid-template-columns: 50% 50%;
+
+}
+
+.schedule-title-row,
+.item-b,
+.item-a,
+.payment-container {
+    font-size: 20px;
+}
+
+.schedule-title-row {
+    text-align: center;
+}
+
+.btnauthorizebudget {
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    padding: 0px;
+    border: 0px;
+}
+
+.btnauthorizebudget {
+    width: 100%;
+    max-width: 285px;
+}
+
+@media screen and (min-width:721px) {
+    .btnauthorizebudget {
+        max-width: 300px;
+    }
+    .span-amount {
+        margin-right: 15%;
+    }
+    .schedule-title-row,
+    .item-b {
+        grid-column-end: span 6;
+    }
+    .item-a,
+    .payment-container {
+        grid-column-end: span 3;
+    }
+    .schedule-container {
+        grid-template-columns: 16% 17% 17% 17% 17% 16%;
+
+    }
+    .schedule-title-row,
+    .item-b,
+    .item-a,
+    .payment-container {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width:1081px) {
+    .btnauthorizebudget {
+        max-width: 315px;
+    }
+    .span-amount {
+        margin-right: 20%;
+    }
+    .schedule-title-row,
+    .item-b,
+    .item-a,
+    .payment-container {
+        font-size: 30px;
+    }
+    .item-a,
+    .payment-container {
+        grid-column-end: span 6;
+    }
+    .schedule-title-row,
+    .item-b {
+        grid-column-end: span 12;
+    }
+    .schedule-container {
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+    }
+}

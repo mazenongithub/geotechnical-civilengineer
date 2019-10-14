@@ -1,0 +1,48 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+.collapse-header:hover {
+    cursor: pointer;
+}
+
+.collapse-header {
+    height: 2em;
+    border-style: solid;
+    border-color: #7CD6FF;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+}
+
+.collapse-content {
+    height: auto;
+    padding: 5px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.display-none {
+    display: none;
+}
+
+#proj-projid {
+    width: 70%;
+    padding: 5px;
+}
+
+#proj-header-div {
+    text-align: center;
+    padding: 10px;
+}
+
+.proj-highlight {
+    background-color: #7CD6FF;
+}
+
+.proj-mouseover {
+    background-color: #B9E9FF;
+}
+
+/* CSS Document */

@@ -1,0 +1,23 @@
+.tblletterviewer {
+    width: 90%;
+    margin: auto;
+}
+
+.letter-vertical-top {
+    vertical-align: top;
+}
+
+.letter-align-center {
+    text-align: center;
+}
+
+#letterid {
+    width: 70%;
+    padding: 3px;
+}
+
+@media print {
+    #letterid {
+        display: none;
+    }
+}

@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:700|Source+Sans+Pro:600|Teko:400,500|Signika:400,600&display=swap');
+.navicon-1 {
+    fill: #d7d7d9;
+    stroke: #006a8d;
+}
+.getmoreprojects-1{fill:#b8d3d9;stroke:#000;stroke-miterlimit:10;stroke-width:2px;}
+.navicon-1,
+.navicon-2 {
+    stroke-miterlimit: 10;
+}
+
+.navicon-2 {
+    fill: #006a8d;
+    stroke: #000;
+}
+
+.logingoogle-1 {
+    fill: #ff1102;
+    stroke-width: 2px;
+}
+
+.logingoogle-1,
+.logingoogle-2 {
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+
+.logingoogle-2 {
+    font-size: 40px;
+    fill: #fff;
+    stroke-width: 0.5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.emaillogin-1 {
+    fill: #4494a6;
+    stroke-width: 2px;
+}
+
+.emaillogin-1,
+.emaillogin-2 {
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+
+.emaillogin-2 {
+    font-size: 40px;
+    fill: #fff;
+    stroke-width: 0.5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.radio-open-1 {
+    fill: #fff;
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+
+.radio-closed-1 {
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+
+.emailsignup-1 {
+    fill: #4494a6;
+    stroke-width: 2px;
+}
+
+.emailsignup-1,
+.emailsignup-2 {
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+
+.emailsignup-2 {
+    font-size: 40px;
+    fill: #fff;
+    stroke-width: 0.5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.googlesignup-1 {
+    fill: #ff1102;
+    stroke-width: 2px;
+}
+
+.googlesignup-1,
+.googlesignup-2 {
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+
+.googlesignup-2 {
+    font-size: 40px;
+    fill: #fff;
+    stroke-width: 0.5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.clearprojectid-1 {
+    fill: #b8d3d9;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.clicktosave-1 {
+    fill: #b8d3d9;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.saveprofile-1 {
+    fill: #4494a6;
+    stroke-width: 2px;
+}
+
+.saveprofile-1,
+.saveprofile-2 {
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+
+.saveprofile-2 {
+    font-size: 40px;
+    fill: #fff;
+    stroke-width: 0.5px;
+    font-family: Poppins-Bold, Poppins;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.authorizebudget-1 {
+    fill: #99ff9b;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.authorizebudget-2 {
+    font-size: 55px;
+    font-family: Teko-Bold, Teko;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+.newevent-1 {
+    fill: #ffffbc;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.newevent-2 {
+    font-size: 55px;
+    font-family: Teko-Bold, Teko;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+.startnewevent-1 {
+    fill: #ffffbc;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.startnewevent-2 {
+    font-size: 55px;
+    font-family: Teko-Bold, Teko;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+.removeevent-1 {
+    fill: none;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.open-menu-1 {
+    fill: #e6e6e6;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.open-menu-2 {
+    fill: #666;
+}
+
+.close-menu-1 {
+    fill: #e6e6e6;
+    stroke: #000;
+}
+
+.close-menu-1,
+.close-menu-2 {
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}
+
+.close-menu-2 {
+    fill: #666;
+    stroke: #666;
+}
+
+.yahoo-1 {
+    fill: #311656;
+    stroke-width: 5px;
+}
+
+.yahoo-1,
+.yahoo-2 {
+    stroke: #000;
+    stroke-miterlimit: 10;
+}
+
+.yahoo-2 {
+    font-size: 45px;
+    fill: #f1f2f1;
+    font-family: Signika-SemiBold, Signika;
+    font-weight: 600;
+}
+
+.yahoo-3 {
+    letter-spacing: -0.01em;
+}
+
+.yahoo-4 {
+    letter-spacing: 0em;
+}
+
+.yahoo-5 {
+    letter-spacing: 0.02em;
+}
+
+.yahoo-6 {
+    letter-spacing: 0em;
+}
+
+.yahoo-7 {
+    letter-spacing: -0.05em;
+}
+
+.clearprojectidicon-1 {
+    fill: #b8d3d9;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+}

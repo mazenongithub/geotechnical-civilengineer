@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Patua+One|Ubuntu:400,500&display=swap');
+.floatingicon-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+}
+
+.menu-container {
+    border: 1px solid;
+}
+
+
+#menu-icon {
+    width: 60px;
+    border: 0px;
+    padding: 0px;
+    border-radius: 10px;
+    background-color: #D7D7D9;
+}
+
+.navigation-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+}
+
+.smalllogo-container {
+    margin-left: 25%;
+}
+
+.logo-container,
+.open-logo-container,
+.smalllogo-container {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    letter-spacing: 1px;
+    color: #00A99D;
+    color: rgb(0, 169, 157);
+    -webkit-text-stroke: 1px #000;
+}
+
+.smallmenu-container {
+    width: 60%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+.smallmenu-container,
+.menu-container,
+.nav-link {
+    text-align: center;
+    font-size: 24px;
+    line-height: 42px;
+    letter-spacing: 2.4px;
+    color: #006A8D;
+    color: rgb(0, 106, 141);
+    background-color: #B8D3D9;
+    font-family: 'Patua One', cursive;
+    -webkit-text-stroke: 1px #000;
+
+}
+
+@media screen and (min-width:721px) {
+    .menu-container {
+        grid-column-end: span 2;
+    }
+    .logo-container {
+        grid-column-end: span 5;
+    }
+    .open-logo-container {
+        grid-column-end: span 4;
+    }
+
+    .navigation-container {
+        grid-template-columns: 16% 17% 17% 17% 17% 16%;
+    }
+
+}
+
+@media screen and (min-width:1081px) {
+
+
+    .menu-container {
+        grid-column-end: span 3;
+    }
+    .open-logo-container {
+        grid-column-end: span 9;
+    }
+    .logo-container {
+        grid-column-end: span 11;
+    }
+    .navigation-container {
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+    }
+}
+
+@media print {
+    .navigation-container,
+    .smallnavigation-container {
+        display: none;
+    }
+
+    .print-header {
+        width: 80%;
+        margin-left: 2%;
+
+    }
+}

@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons');
+
+
+input,
+select {
+    font-size: 16px;
+    font-family: Roboto;
+}
+
+.google-calendar {
+    border: 0px;
+    width: 100%;
+    height: 600px;
+    frameborder: 0px;
+    scrolling: no;
+    padding: 5px;
+
+
+}
+
+.date-grid-element {
+    font-family: Roboto;
+}
+
+.grid-container-googlecalendar {
+    grid-template-columns: auto;
+    grid-row-gap: 5px;
+    display: grid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: Roboto;
+}
+
+.date-picker {
+    padding: 5px;
+
+}
+
+.date-grid {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: auto auto;
+
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.button-grid-element {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: Roboto;
+}
+
+.calendarbutton {
+    width: 60%;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: auto;
+    font-family: Roboto;
+}
+
+#eventid-calendar,
+#projectid-calendar {
+    width: 98%;
+    padding: 3px
+}
+
+#calendardescription,
+#eventtitle {
+    width: 96%;
+    padding: 3px
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+@media screen and (min-width:600px) {
+    .grid-container-googlecalendar {
+        grid-template-columns: 15% 60% 25%;
+        grid-column-gap: 5px;
+    }
+
+    .time-grid {
+
+        grid-template-columns: auto auto;
+    }
+
+    .date-grid {
+        grid-template-columns: 20% auto;
+        grid-column-gap: 5px;
+    }
+
+
+
+
+
+}
+
+@media screen and (min-width:900px) {
+    .grid-container-googlecalendar {
+        grid-template-columns: 15% 60% 25%;
+        grid-column-gap: 5px;
+    }
+
+    .date-grid {
+        grid-template-columns: 10% auto;
+        grid-column-gap: 5px;
+    }
+    .calendarbutton {
+        width: 30%;
+    }
+
+}

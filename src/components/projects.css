@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:600&display=swap');
+.inactive-projectlist {
+    display: none;
+}
+
+.project-link {
+    text-decoration: none;
+    color: #000000;
+}
+
+
+#newprojectscope {
+    height: 300px;
+}
+
+.subprojectlabel {
+    position: relative;
+    bottom: 10px;
+}
+
+.project-icon,
+.project-subicon {
+    margin-left: 10px;
+    width: 31px;
+    border: 0px;
+    padding: 0px;
+
+}
+
+.project-subicon {
+    background-color: #97D2F7;
+}
+
+.project-icon {
+    background-color: #4CB5F5;
+    margin-right: 15px;
+}
+
+.project-subicon {
+    margin-right: 15px;
+
+}
+
+.projectid-subcontainer {
+    vertical-align: top;
+}
+
+.projectid-container {
+    border: 1px solid;
+    background-color: #4CB5F5;
+    margin-top: 15px;
+    min-height: 45px
+}
+
+.projectid-subcontainer {
+    border: 1px solid;
+    background-color: #97D2F7;
+    padding-top: 5px;
+    min-height: 40px
+}
+
+.project-field {
+    width: 98%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.radio-label {
+    position: relative;
+    top: 10px;
+}
+
+.proposed-radio {
+    width: 41px;
+    border: 0px;
+    padding: 0px;
+    background-color: #FFFFFF;
+    margin-right: 2%;
+}
+
+.none {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.project-scope,
+.project-title-container,
+.project-address-container,
+.project-field,
+.project-scope-container,
+.project-location-container,
+.innerprojectlist-element,
+.innerproject-element,
+.project-showlocation,
+.project-showscope,
+.project-linktoprojects,
+.project-message-container {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+}
+
+.project-title-container,
+.project-address-container,
+.project-scope-container,
+.project-location-container,
+.projectid-container {
+    font-size: 24px;
+}
+
+
+.project-field,
+.project-scope,
+.projectid-subcontainer,
+.projectid-projectlist,
+.innerprojectlist-element,
+.innerproject-element,
+.project-showlocation,
+.project-showscope,
+.project-linktoprojects,
+.project-message-container,
+.active-message-container{
+    font-size: 20px;
+}
+
+#btnclearprojectid,
+#btnsaveprojects {
+    border: 0px;
+    padding: 0px;
+    background-color: #FFFFFF;
+}
+
+#btnclearprojectid,
+#btnsaveprojects {
+    width: 280px;
+}
+
+.project-title,
+.projectid-container,
+.projectid-subcontainer {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    color: #000000;
+}
+
+.project-title,
+.project-row-1a,
+.projectid-container,
+.project-showlocation,
+.btnloginuser,
+.project-message-container {
+    text-align: center;
+}
+
+.project-container,
+.innerprojectlist-container {
+    display: grid;
+    grid-row-gap: 15px;
+    grid-column-gap: 15px;
+    grid-template-columns: 50% 50%;
+}
+
+.icon-left {
+    float: left;
+    margin-top: 5px;
+}
+
+.project-title {
+    font-size: 24px;
+    letter-spacing: 1.32px;
+}
+
+.project-title,
+.project-row-1a,
+.project-row-1b,
+.project-scope,
+.project-title-container,
+.project-address-container,
+.project-scope-container,
+.projectid-container,
+.project-location-container,
+.project-showlocation,
+.project-showscope,
+.project-linktoprojects,
+.project-message-container,
+.active-message-container{
+    grid-column-end: span 2;
+}
+
+.project-button {
+    border: 0px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.project-button {
+    max-width: 285px;
+}
+
+@media screen and (min-width:721px) {
+    .project-button {
+        max-width: 335px;
+    }
+    .project-title-container,
+    .project-address-container,
+    .project-scope-container,
+    .project-location-container,
+    .projectid-container {
+        font-size: 30px;
+    }
+
+
+    .project-field,
+    .project-scope,
+    .projectid-subcontainer,
+    .projectid-projectlist,
+    .innerprojectlist-element,
+    .innerproject-element,
+    .project-showlocation,
+    .project-showscope,
+    .project-linktoprojects,
+    .project-message-container {
+        font-size: 24px;
+    }
+
+    .project-row-1a,
+    .project-row-1b {
+        grid-column-end: span 3;
+    }
+    .project-title,
+    .project-scope,
+    .project-title-container,
+    .project-address-container,
+    .project-scope-container,
+    .projectid-container,
+    .projectid-container,
+    .project-showlocation,
+    .project-showscope,
+    .project-linktoprojects,
+    .innerproject-element,
+    .project-message-container,
+    .active-message-container{
+        grid-column-end: span 6;
+    }
+    .project-title {
+        font-size: 30px;
+        letter-spacing: 1.65px;
+    }
+    .project-container,
+    .innerprojectlist-container {
+        grid-template-columns: 16% 17% 17% 17% 17% 16%;
+    }
+    .project-location-container,
+    .innerprojectlist-element {
+        grid-column-end: span 3;
+    }
+}
+
+@media screen and (min-width:1081px) {
+    .project-button {
+        max-width: 375px;
+    }
+    .project-location-container,
+    .innerprojectlist-element {
+        grid-column-end: span 6;
+    }
+    .project-title-container,
+    .project-address-container,
+    .project-scope-container,
+    .project-location-container {
+        font-size: 36px;
+    }
+
+
+    .project-field,
+    .project-scope,
+    .projectid-subcontainer,
+    .projectid-projectlist,
+    .innerprojectlist-element,
+    .project-showlocation,
+    .project-showscope,
+    .project-linktoprojects {
+        font-size: 30px;
+    }
+    #btnclearprojectid,
+    #btnsaveprojects {
+        width: 360px;
+    }
+
+    .project-row-1a {
+        grid-column-end: span 4;
+    }
+
+    .project-row-1b {
+        grid-column-end: span 8;
+    }
+    .project-title,
+    .project-scope,
+    .project-title-container,
+    .project-address-container,
+    .project-scope-container,
+    .projectid-container,
+    .project-showlocation,
+    .project-showscope,
+    .project-linktoprojects,
+    .innerproject-element,
+    .project-message-container,
+    .active-message-container{
+        grid-column-end: span 12;
+    }
+    .project-title {
+        font-size: 36px;
+        letter-spacing: 1.98px;
+    }
+    .project-container,
+    .innerprojectlist-container {
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+    }
+}

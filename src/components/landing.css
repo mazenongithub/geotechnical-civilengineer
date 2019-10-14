@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Stylish|Francois+One|Lato|Roboto|IBM+Plex+Serif');
+#eventid-calendar,
+#projectid-calendar {
+    width: 98%;
+    padding: 3px
+}
+
+
+.landing {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+
+.grid-container-landing {
+    display: grid;
+    grid-row-gap: 10px;
+    grid-template-columns: auto;
+
+
+}
+
+.btnlocal {
+    background-color: #1B325F;
+    color: #EBF7F8;
+    font-family: "Roboto";
+    border-radius: 3px;
+    font-size: 20px;
+    padding: 5px;
+    height: 60px;
+    width: 90%;
+    margin: auto;
+}
+
+.googlesym {
+    font-family: 'IBM Plex Serif', serif;
+    ;
+}
+
+.btngoogle {
+    background-color: #EC2424;
+    color: #f1f1db;
+    font-family: "Roboto";
+    border-radius: 3px;
+    font-size: 20px;
+    padding: 5px;
+    height: 60px;
+    width: 90%;
+    margin: auto;
+}
+
+.btnlinkedin {
+    background-color: #057ac9;
+    color: #EBF7F8;
+    font-family: "Roboto";
+    border-radius: 3px;
+    font-size: 20px;
+    padding: 5px;
+    height: 60px;
+    width: 90%;
+    margin: auto;
+}
+
+.linkedinsym {
+    width: 15%;
+    background-color: #EBF7F8;
+    color: #057ac9;
+    border-radius: 2px;
+    text-align: center;
+}
+
+@media screen and (min-width:600px) {
+    .grid-container-landing {
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        grid-template-columns: repeat(2, auto);
+
+    }
+
+
+}
+
+@media screen and (min-width:1024px) {
+    .grid-container-landing {
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        grid-template-columns: repeat(4, auto);
+
+    }
+
+}

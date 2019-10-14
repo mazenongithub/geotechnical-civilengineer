@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1|Poppins:700&display=swap');
+
+.login-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 15px;
+    font-family: 'Gothic A1', sans-serif;
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+.btnloginuser,
+.google-container {
+    width: 280px;
+    padding: 0px;
+    border: 0px;
+    background-color: #FFFFFF;
+}
+
+.google-container {
+    margin: auto;
+}
+
+.login-title,
+.loginbutton-container {
+    text-align: center;
+}
+
+.login-title,
+.loginbutton-container,
+.loginfield-label,
+.loginfield {
+    grid-column-end: span 2;
+}
+
+@media screen and (min-width:721px) {
+    .btnloginuser,
+    .google-container {
+        width: 346px;
+    }
+    .loginfield-label {
+        grid-column-end: span 2;
+    }
+    .loginfield {
+        grid-column-end: span 4;
+    }
+
+    .login-container {
+        grid-template-columns: 16% 17% 17% 17% 17% 16%;
+    }
+    .login-title,
+    .loginbutton-container {
+        grid-column-end: span 6;
+    }
+}
+
+@media screen and (min-width:1081px) {
+    .loginfield-label {
+        grid-column-end: span 3;
+    }
+    .loginfield {
+        grid-column-end: span 9;
+    }
+
+    .login-title,
+    .loginbutton-container {
+        grid-column-end: span 12;
+    }
+    .login-container {
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+    }
+}

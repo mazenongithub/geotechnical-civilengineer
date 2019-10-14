@@ -1,0 +1,201 @@
+.event-container {
+        display: grid;
+        grid-row-gap: 15px;
+        grid-column-gap: 15px;
+
+}
+
+.event-minute-container {
+        background-color: #94D794;
+}
+
+.event-minute-container-reserved {
+        background-color: #F4F40B;
+}
+
+.event-minute-container,
+.event-minute-container-reserved,
+.minutes-expired {
+        min-height: 50px;
+}
+
+.event-minute-container,
+.event-minute-container-reserved,
+.minutes-expired {
+
+        border-color: #FFFFFF;
+        border: 1px solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+}
+
+.starttime-container,
+.event-container {
+        width: 90%;
+        margin: auto;
+}
+
+.btn-removeevent {
+        width: 54px;
+        height: auto;
+}
+
+.btn-removeevent {
+        border: 0px;
+        padding: 0px;
+        background-color: #F7F128;
+        border-radius: 8px;
+}
+
+.activetime-container {
+        background-color: #F25151;
+}
+
+.starttime-container,
+.eventid-container {
+        padding: 15px;
+        border-color: #FFFFFF;
+        border: 1px solid;
+}
+
+.eventid-container {
+        height: 50px;
+}
+
+.eventid-container {
+        background-color: #F7F128;
+        border-radius: 20px;
+}
+
+.event-minute-container,
+.event-minute-container-reserved,
+.minutes-expired {
+        text-align: center;
+}
+
+.event-titlerow,
+.event-datecontainer,
+.event-minute-container,
+.event-minute-container-reserved,
+.minutes-expired {
+        font-size: 20px;
+}
+
+.event-titlerow,
+.event-datecontainer,
+.event-minute-container,
+.event-minute-container-reserved,
+.minutes-expired {
+        font-family: 'Roboto', sans-serif;
+}
+
+.event-titlerow {
+        text-align: center;
+}
+
+.event-titlerow,
+.event-datecontainer {
+        grid-column-end: span 2;
+}
+
+.button-events {
+        width: 280px;
+        border-radius: 20px;
+}
+
+.button-events {
+        border: 0px;
+        padding: 0px;
+        background-color: #FFFFFF;
+}
+
+
+
+.removeevent-container {
+        width: 30%;
+}
+
+
+.removeevent-container,
+.findevent-container {
+        float: left;
+}
+
+.findevent-container {
+        width: 70%;
+}
+
+.minutes-expired {
+        border: 1px solid;
+}
+
+@media screen and (min-width:721px) {
+
+        .eventtime-container {
+                grid-column-end: span 2;
+        }
+        .button-events {
+                width: 300px;
+        }
+        .event-titlerow,
+        .event-datecontainer,
+        .event-minute-container,
+        .event-minute-container-reserved {
+                font-size: 24px;
+        }
+
+        .fieldreport-container {
+                grid-template-columns: 12% 13% 12% 13% 12% 13% 12% 13%;
+
+        }
+
+        .event-titlerow,
+        .event-datecontainer {
+                grid-column-end: span 8;
+        }
+        .removeevent-container {
+                width: 10%;
+        }
+        .findevent-container {
+                width: 90%;
+        }
+        .minutes-expired {
+                font-size: 20px;
+        }
+
+}
+
+@media screen and (min-width:1081px) {
+
+        .minutes-expired {
+                font-size: 18px;
+        }
+        .button-events {
+                width: 320px;
+        }
+
+        .event-titlerow,
+        .event-datecontainer,
+        .event-minute-container,
+        .event-minute-container-reserved {
+                font-size: 30px;
+        }
+
+        .event-titlerow,
+        .event-datecontainer {
+                grid-column-end: span 12;
+        }
+
+        .fieldreport-container {
+                grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+
+        }
+        .removeevent-container {
+                width: 8%;
+        }
+        .findevent-container {
+                width: 90%;
+        }
+
+}

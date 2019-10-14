@@ -1,0 +1,33 @@
+.cell-vert-top {
+    vertical-align: top;
+}
+
+.cell-right {
+    text-align: right;
+}
+
+.subject {
+    margin-right: 2%;
+    width: 80%;
+}
+
+.projectblock {
+    width: 65%;
+    margin-left: 2%;
+}
+
+.cell-center {
+    text-align: center;
+}
+
+#invoiceid {
+    padding: 3px;
+    width: 70%;
+}
+
+@media print {
+    #invoiceid,
+    #balanceprojectid {
+        display: none;
+    }
+}

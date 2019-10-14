@@ -1,0 +1,117 @@
+.fullWidth {
+    width: 98%
+}
+
+.halfWidth {
+    width: 50%;
+    margin: auto;
+}
+
+.calendar-date:hover {
+    cursor: pointer;
+}
+
+.active-calendar {
+    background-color: #CBDBD7;
+}
+
+.active-actualcalendar {
+    background-color: #C2D2F2;
+}
+
+.span-2 {
+    grid-column-end: span 2;
+}
+
+.span-4 {
+    grid-column-end: span 4;
+}
+
+.control-row {
+    grid-column-end: span 2;
+}
+
+input[type=datetime-local] {
+    font-size: 20px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.time-container {
+    display: grid;
+    grid-template-columns: 16% 17% 17% 17% 17% 16%;
+    font-size: 24px;
+    font-family: 'Nunito Sans', sans-serif;
+    width: 100%;
+    grid-row-gap: 15px;
+    grid-column-gap: 15px;
+    margin-top: 30px;
+    max-width: 300px;
+    vertical-align: top;
+}
+
+.daydisplay {
+    font-size: 20px;
+    text-align: center;
+}
+
+.time-element {
+    padding: 3px;
+    border-radius: 1px;
+    min-height: 60px;
+    align-self: start;
+
+}
+
+.displayoff {
+    display: none;
+}
+
+.displayframe {
+    background-color: #EEF4F2;
+    text-align: center;
+}
+
+.actualdisplayframe {
+    background-color: #C2D2F2;
+    text-align: center;
+}
+
+
+.alignCenter {
+    text-align: center;
+}
+
+.spanall {
+    grid-column-end: span 6
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: 15% 14% 14% 14% 14% 14% 15%;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+}
+
+.calendar-element {
+    border: 1px solid;
+    min-height: 1em;
+}
+
+@media screen and (min-width:721px) {
+
+    .time-container {
+        width: 100%;
+        max-width: 660px;
+    }
+    .time-element {
+        min-height: 80px;
+    }
+}
+
+@media screen and (min-width:1081px) {
+    .time-container {
+        margin-left: 30px;
+        max-width: 400px;
+    }
+
+}

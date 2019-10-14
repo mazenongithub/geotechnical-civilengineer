@@ -1,0 +1,34 @@
+.figure-template {
+    border: none;
+    margin: auto;
+}
+
+.checkdiv {
+    background-color: red;
+    border: 1px solid;
+}
+
+.text-div {
+    font-size: 20px;
+    text-align: center;
+    transform: scaleY(-1);
+    vertical-align: middle;
+    text-align: center;
+}
+
+.svg-cell {
+    vertical-align: top;
+    border: none;
+}
+
+@media screen and (min-width:600px) {
+    .text-div {
+        font-size: 24px;
+    }
+}
+
+@media print {
+    .text-div {
+        font-size: 24px;
+    }
+}

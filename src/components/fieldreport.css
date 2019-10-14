@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+.compactioncurve-labelrow-b,
+.compactioncurve-labelrow-c,
+.compactioncurve-labelrow-a,
+.compactioncurve-container,
+.compactiontest-labelrow-b,
+.compactiontest-labelrow-a,
+.compactiontest-labelrow-c {
+    border: 1px solid;
+
+}
+
+.compactioncurve-container {
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.compactioncurve-labelrow-b,
+.compactioncurve-labelrow-c,
+.compactioncurve-labelrow-a,
+.compactiontest-labelrow-a,
+.compactiontest-labelrow-b,
+.compactiontest-labelrow-c {
+    font-size: 18px;
+    letter-spacing: -0.18px;
+    color: #000000;
+    color: rgb(0, 0, 0);
+}
+
+.compactioncurve-labelrow-b,
+.compactioncurve-labelrow-c,
+.compactioncurve-labelrow-a,
+.compactiontest-labelrow-b,
+.compactiontest-labelrow-a,
+.compactiontest-labelrow-c {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.compactioncurve-labelrow-b,
+.compactiontest-labelrow-b {
+    grid-column-end: span 5;
+}
+
+.compactioncurve-labelrow-c {
+    grid-column-end: span 3;
+}
+
+.fieldreport-container,
+.compactioncurve-container {
+    display: grid;
+}
+
+.compactiontest-labelrow-c {
+    grid-column-end: span 2;
+}
+
+.fieldreport-title,
+.compactiontable-header,
+.compactioncurve-labelrow-a,
+.compactioncurve-labelrow-b,
+.compactioncurve-labelrow-c,
+.compactiontest-labelrow-b,
+.compactiontest-labelrow-a,
+.compactiontest-labelrow-c {
+    text-align: center;
+}
+
+.fieldreport-title,
+.fieldreport-row-1,
+.fieldreport-daterow,
+.compactiontable-header {
+    font-size: 20px;
+}
+
+.fieldreport-container {
+    grid-column-gap: 20px;
+    grid-row-gap: 15px;
+}
+
+.fieldreport-container {
+    grid-template-columns: 50% 50%;
+
+}
+
+.fieldreport-title,
+.fieldreport-row-1,
+.fieldreport-daterow,
+.compactiontable-header {
+    font-family: 'Roboto', sans-serif;
+}
+
+.compactiontable-header {
+    font-weight: 700;
+}
+
+.fieldreport-title,
+.fieldreport-row-1,
+.fieldreport-daterow {
+    grid-column-end: span 2;
+}
+
+.fieldreport-title {
+    grid-column-end: span 2;
+}
+
+.compactioncurve-container {
+    grid-template-columns: 16% 17% 17% 17% 17% 16%;
+}
+
+.compactiontable-header {
+    grid-column-end: span 6;
+}
+
+compactioncurve-labelrow-b {}
+
+@media screen and (min-width:721px) {
+    .compactioncurve-labelrow-b,
+    .compactioncurve-labelrow-c,
+    .compactioncurve-labelrow-a,
+    .compactiontest-labelrow-b,
+    .compactiontest-labelrow-a {
+        font-size: 20px;
+        letter-spacing: -0.2px;
+
+    }
+    .fieldreport-row-1,
+    .compactioncurve-labelrow-b,
+    .compactiontest-labelrow-c {
+        grid-column-end: span 3;
+
+    }
+    .compactioncurve-labelrow-a,
+    .compactioncurve-labelrow-c {
+        grid-column-end: span 1;
+
+    }
+    .compactiontest-labelrow-b {
+        grid-column-end: span 5;
+    }
+    .fieldreport-title,
+    .fieldreport-row-1,
+    .fieldreport-daterow,
+    .compactiontable-header {
+        font-size: 24px;
+    }
+    .fieldreport-title,
+    .fieldreport-daterow {
+        grid-column-end: span 6;
+    }
+    .fieldreport-container {
+        grid-column-gap: 15px;
+    }
+    .fieldreport-container {
+        grid-template-columns: 16% 17% 17% 17% 17% 16%;
+
+    }
+}
+
+@media screen and (min-width:1081px) {
+    .compactiontest-labelrow-b {
+        grid-column-end: span 5;
+    }
+    .compactioncurve-labelrow-b {
+        grid-column-end: span 7;
+    }
+    .compactioncurve-labelrow-c {
+        grid-column-end: span 2;
+    }
+    .fieldreport-row-1 {
+        grid-column-end: span 6;
+
+    }
+    .compactiontest-labelrow-b,
+    .compactiontest-labelrow-a,
+    .compactioncurve-labelrow-b,
+    .compactioncurve-labelrow-c,
+    .compactioncurve-labelrow-a {
+        font-size: 24px
+    }
+    .fieldreport-title,
+    .fieldreport-row-1,
+    .fieldreport-daterow,
+    .compactiontable-header {
+        font-size: 30px;
+    }
+    .fieldreport-title,
+    .fieldreport-daterow,
+    .compactiontable-header {
+        grid-column-end: span 12;
+    }
+    .fieldreport-container {
+        grid-column-gap: 20px;
+    }
+    .fieldreport-container,
+    .compactioncurve-container {
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+    }
+}
+
+@media print {
+    .compactiontest-labelrow-b {
+        grid-column-end: span 5;
+    }
+    .compactioncurve-labelrow-b {
+        grid-column-end: span 7;
+    }
+    .compactioncurve-labelrow-c {
+        grid-column-end: span 2;
+    }
+    .fieldreport-row-1 {
+        grid-column-end: span 6;
+
+    }
+    .compactiontest-labelrow-b,
+    .compactiontest-labelrow-a,
+    .compactioncurve-labelrow-b,
+    .compactioncurve-labelrow-c,
+    .compactioncurve-labelrow-a {
+        font-size: 12px
+    }
+    .fieldreport-title,
+    .fieldreport-row-1,
+    .fieldreport-daterow,
+    .compactiontable-header {
+        font-size: 14px;
+    }
+    .fieldreport-title,
+    .fieldreport-daterow,
+    .compactiontable-header {
+        grid-column-end: span 12;
+    }
+    .fieldreport-container {
+        grid-column-gap: 12px;
+    }
+    .fieldreport-container,
+    .compactioncurve-container {
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+
+    }
+
+    .compactioncurve-container {
+        width: 98%;
+        margin: auto;
+
+    }
+    .fieldreport-container {
+        width: 80%;
+
+    }
+    .project-linktoprojects {
+        display: none;
+    }
+}

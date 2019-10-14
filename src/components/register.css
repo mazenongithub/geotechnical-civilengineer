@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Gothic+A1&display=swap');
+.register-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 30px;
+    grid-column-gap: 30px;
+    font-family: 'Gothic A1', sans-serif;
+    margin-top: 15px;
+
+}
+
+.benefits-subgrid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    font-family: 'Gothic A1', sans-serif;
+    grid-row-gap: 1px;
+    grid-column-gap: 1px;
+}
+
+.engineer-labels {
+    font-family: 'Fjalla One', sans-serif;
+    color: #768FA6;
+    -webkit-text-stroke: 1px #030330;
+}
+
+.menu-icon {
+    margin-left: 30px;
+    width: 36px;
+    padding: 0px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.nodecoration {
+    text-decoration: none;
+    color: #000000;
+}
+
+.main-profile-container,
+.profile-container-2 {
+
+    font-size: 24px;
+}
+
+.engineer-labels,
+.benefits-subgrid,
+.main-profile-general,
+.register-half,
+.register-full,
+.gender-container {
+    font-size: 20px;
+}
+
+.newradio {
+    width: 41px;
+    border: 0px;
+    padding: 0px;
+    background-color: #FFFFFF;
+    margin-left: 2%;
+}
+
+.benefits-small-1 {
+    border: 1px solid;
+}
+
+.register-title,
+.gender-container,
+.register-half,
+.register-full,
+.emailsignup,
+.main-profile-container,
+.main-profile-general,
+.benefits-header,
+.benefits-small-1,
+.profile-container-2,
+.register-google {
+    grid-column-end: span 2;
+}
+
+.main-profile-general {
+    vertical-align: top;
+}
+
+.inactive-menu {
+    display: none;
+}
+
+.profilepicture-container {
+    width: 280px;
+    margin: auto;
+}
+
+.profile-picture {
+    width: 100%;
+    height: auto;
+}
+
+.register-title,
+.profilelanding,
+.main-profile-container,
+.profile-container-2,
+.benefits-header,
+.register-google {
+    text-align: center;
+}
+
+.emailsignup {
+    text-align: right;
+}
+
+#btnsignupemail {
+    margin-right: 8%;
+}
+
+#btnregisterwithgoogle,
+#btnsignupemail,
+.btnregister {
+    width: 280px;
+    padding: 0px;
+    border: 0px;
+    background-color: #FFFFFF;
+}
+
+.register-title {
+    font-size: 30px;
+}
+
+@media screen and (min-width:721px) {
+    .profilepicture-container {
+        width: 300px;
+    }
+    .benefits-small,
+    .benefits-medium {
+        border: 1px solid;
+    }
+
+    .main-profile-container,
+    .profile-container-2 {
+
+        font-size: 30px;
+    }
+    #btnregisterwithgoogle,
+    .btnregister {
+        width: 340px;
+    }
+    .engineer-labels,
+    .benefits-subgrid,
+    .main-profile-general,
+    .register-half,
+    .register-full,
+    .gender-container {
+        font-size: 24px;
+    }
+    .register-half,
+    .profile-container-2,
+    .register-google {
+        grid-column-end: span 3;
+    }
+
+    .register-title,
+    .gender-container,
+    .register-full,
+    .emailsignup,
+    .main-profile-container,
+    .main-profile-general,
+    .benefits-header {
+        grid-column-end: span 6;
+    }
+    .register-container,
+    .benefits-subgrid {
+        grid-template-columns: 16% 17% 17% 17% 17% 16%;
+    }
+    .benefits-medium {
+        grid-column-end: span 2;
+    }
+
+}
+
+@media screen and (min-width:1081px) {
+    .profilepicture-container {
+        width: 360px
+    }
+    .profile-container-2,
+    .engineer-labels,
+    .benefits-subgrid,
+    .main-profile-general,
+    .register-half,
+    .register-full,
+    .gender-container {
+        font-size: 30px;
+    }
+    .main-profile-container,
+    .profile-container-2,
+    .register-title,
+    .register-half {
+
+        font-size: 36px;
+    }
+    .register-half,
+    .profile-container-2,
+    .register-google {
+        grid-column-end: span 6;
+    }
+    .register-title,
+    .gender-container,
+    .register-full,
+    .emailsignup,
+    .main-profile-container,
+    .main-profile-general {
+        grid-column-end: span 12;
+    }
+    .register-container {
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+    }
+
+
+
+}
+
+@media print {
+    .benefits-medium {
+        grid-column-end: span 2;
+    }
+    .profile-container-2,
+    .engineer-labels,
+    .benefits-subgrid,
+    .main-profile-general {
+        font-size: 16px;
+    }
+    .main-profile-container {
+
+        font-size: 20px;
+    }
+    .register-half,
+    .profile-container-2,
+    .benefits-header {
+        grid-column-end: span 6;
+    }
+    .register-title,
+    .gender-container,
+    .register-full,
+    .emailsignup,
+    .register-google,
+    .main-profile-container,
+    .main-profile-general {
+        grid-column-end: span 12;
+    }
+    .register-container {
+        width: 90%;
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+    }
+    .benefits-subgrid {
+        width: 90%;
+        grid-template-columns: 16% 17% 17% 17% 17% 16%;
+    }
+
+
+
+}

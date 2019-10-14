@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Poppins');
+.grid-element-login {
+    width: 60%;
+    margin: auto;
+    padding: 10px;
+}
+
+.grid-container-login {
+    grid-template-columns: auto;
+    display: grid;
+}
+
+.signuptext {
+    padding: 3px;
+    width: 95%;
+    font-size: 16px;
+}
+
+.submit-button {
+    width: 60%;
+    padding: 2px;
+    font-size: 16px;
+    border-radius: 13px;
+    font-family: 'Poppins';
+}
+
+.signupform {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    margin-left: 10%;
+}
+
+.grid-container-1 {
+    width: 90%;
+    margin-left: 10%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    font-family: 'Open Sans';
+}
+
+.grid-element-1 {
+    justify-self: start;
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+@media screen and (min-width:600px) {
+    .grid-container-1 {
+        grid-template-columns: 15% 55% 30%;
+
+    }
+    .submit-button {
+        width: 40%;
+        padding: 2px;
+    }
+
+
+
+    .grid-container-login {
+        grid-template-columns: auto;
+    }
+
+    .grid-element-login {
+        width: 35%;
+    }
+
+
+}
+
+@media screen and (min-width:1024px) {
+
+    .grid-container-1 {
+        grid-template-columns: 10% 60% 30%;
+
+    }
+    .grid-container-login {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .grid-element-login {
+        width: 50%;
+    }
+
+    .submit-button {
+        width: 25%;
+        padding: 2px;
+    }
+
+}

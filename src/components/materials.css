@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500|Nunito|Nunito+Sans');
+.hidden {
+    display: none
+}
+
+.material-container {
+    display: grid;
+    grid-template-columns: 50% auto;
+    font-family: 'Nunito Sans', sans-serif;
+    grid-row-gap: 15px;
+    grid-column-gap: 15px;
+}
+
+
+
+.datein-container,
+.milestonestartdate-container,
+.milestoneenddate-container {
+    display: grid;
+    grid-template-columns: 17% 17% 17% 17% 16% auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.material-titlerow {
+    grid-column-end: span 2;
+    text-align: center;
+    font-size: 30px;
+}
+
+.material-datecontainer,
+.materialid-container,
+.newmaterialid {
+    grid-column-end: span 2;
+}
+
+
+.materialid-titlerow-2 {
+    border: 1px solid;
+    font-size: 20px;
+}
+
+.datein-element-1a,
+.milestonestartdate-element-1a,
+.milestoneenddate-element-1a {
+    grid-column-end: span 5;
+    font-size: 20px;
+}
+
+.date-menuicon {
+    width: 100px;
+    height: auto;
+    border: 0px;
+    background-color: #E6E6E6;
+}
+
+.displaydate,
+.material-milestone,
+.material-description,
+.newmaterialid {
+    grid-column-end: span 2;
+}
+
+.datebutton {
+    width: 54px;
+}
+
+.datebutton,
+.milestonedatebutton {
+    height: auto;
+    border: 0px;
+    background-color: #FFFFFF;
+}
+
+.milestonedatebutton {
+    width: 58px;
+}
+
+.dateincalendar-container,
+.milestonestartdatecalendar-container,
+.milestoneenddatecalendar-container {
+    grid-column-end: span 6;
+    width: 95%;
+    margin: auto;
+}
+
+.milestonematerial,
+.material-description,
+.material-proposal,
+.amount-row {
+    font-size: 20px;
+}
+
+.material-buttonrow,
+.material-buttonrow,
+.material-fields,
+.datein-element-1b {
+    font-size: 20px;
+    align-self: start;
+}
+
+.material-fields,
+.material-split,
+.materialid-titlerow-1,
+.materialid-titlerow-2,
+.displaydate {
+    text-align: center;
+    align-self: start;
+}
+
+
+#btninsertschedulematerial,
+#btninsertactualmaterial {
+    width: 100%;
+    max-width: 320px;
+    border: 0px;
+    background-color: #FFFFFF;
+}
+
+.mymaterial-date,
+.mymaterial-desc,
+.mymaterial-amount,
+.mymaterial-remove,
+.displaydate {
+    font-size: 20px;
+}
+
+
+.btn-removematerial {
+    width: 100px;
+    border: 0px;
+    background-color: #FFFFFF;
+}
+
+#btn-clearschedulematerialid,
+#btn-clearactualmaterialid {
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 0px;
+}
+
+.active-materialcalendar {
+    background-color: #C2D2F2;
+}
+
+.active-startdatecalendar,
+.active-enddatecalendar {
+    background-color: #DFFF92;
+}
+
+.active-materialid {
+    background-color: #ACCFCC;
+}
+
+.active-actualmaterialid {
+    background-color: #C2D2F2;
+}
+
+.milestonebutton {
+    width: 100%;
+    max-width: 58px;
+}
+
+@media screen and (min-width:721px) {
+     .material-container {
+        grid-template-columns: 17% 17% 17% 17% 16% auto;
+    }
+    .btn-removematerial {
+        width: 100%;
+        min-width: 100px;
+    }
+    .mymaterial-date,
+    .materialid-titlerow-1 {
+        font-size: 24px;
+        grid-column-end: span 2;
+    }
+    .mymaterial-desc {
+        font-size: 24px;
+        grid-column-end: span 5;
+    }
+    .mymaterial-remove {
+        grid-column-end: span end;
+    }
+
+    .material-message {
+        grid-column-end: span 8;
+    }
+    .mymaterial-amount,
+    .materialid-titlerow-2,
+    .material-message {
+        font-size: 24px;
+        grid-column-end: span 4;
+    }
+
+    .material-split {
+        grid-column-end: span 3;
+    }
+
+
+    .amount-row {
+        grid-column-end: span 6;
+    }
+
+    .material-buttonrow,
+    .material-fields,
+    .material-proposal,
+    .amount-row,
+    .materialid-titlerow-1,
+    .materialid-titlerow-2,
+    .material-description,
+    .datein-element-1a,
+    .datein-element-1b,
+    .milestonestartdate-element-1a,
+    .milestonestartdate-element-1b,
+    .milestoneenddate-element-1a,
+    .milestoneenddate-element-1b,
+    .displaydate,
+    .newmaterialid {
+        font-size: 24px;
+
+    }
+    .material-fields,
+    .material-clearcontainer {
+        grid-column-end: span 2;
+    }
+    .material-fields,
+    .dateincalendar-container,
+    .milestonestartdatecalendar-container {
+        width: 95%;
+        margin: auto;
+    }
+    .datebutton {
+        width: 76px;
+
+    }
+
+    .date-menuicon {
+        width: 100%;
+    }
+   
+    .material-titlerow {
+        grid-column-end: span 6;
+        font-size: 40px;
+    }
+    .material-datecontainer,
+    .material-milestone,
+    .material-description,
+    .material-spanall,
+    .newmaterialid {
+        grid-column-end: span 6;
+    }
+
+    .milestonematerial {
+        width: 60%;
+        font-size: 24px;
+    }
+    .milestonestartdate-container,
+    .milestoneenddate-container {
+        max-width: 335px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (min-width:1081px) {
+    .material-clearcontainer {
+        grid-column-end: span 4;
+    }
+    .material-message {
+        grid-column-end: span 8;
+    }
+    .milestonestartdate-container,
+    .milestoneenddate-container {
+        max-width: 531px;
+        margin-left: 10px;
+    }
+    .mymaterial-date {
+        font-size: 30px;
+        grid-column-end: span 3;
+    }
+
+    .mymaterial-desc {
+        font-size: 30px;
+        grid-column-end: span 10;
+    }
+    .mymaterial-amount {
+        font-size: 30px;
+        grid-column-end: span 9;
+    }
+    .material-split {
+        grid-column-end: span 6;
+    }
+    .material-fields,
+    .amount-row {
+
+        grid-column-end: span 3;
+    }
+    .material-buttonrow,
+    .material-proposal,
+    .amount-row,
+    .material-description,
+    .materialid-titlerow-1,
+    .materialid-titlerow-2,
+    .datein-element-1a,
+    .datein-element-1b,
+    .milestonestartdate-element-1a,
+    .milestonestartdate-element-1b,
+    .milestoneenddate-element-1a,
+    .milestoneenddate-element-1b,
+    .displaydate,
+    .material-message,
+    .newmaterialid {
+        font-size: 30px;
+    }
+    .milestonematerial {
+        width: 40%;
+        float: right;
+        font-size: 30px;
+        margin-right: 30px;
+    }
+
+    .material-container {
+        grid-template-columns: 8% 8% 9% 8% 8% auto 8% 8% 9% 8% 8% 9%;
+    }
+    .material-titlerow,
+    .material-milestone,
+    .material-description,
+    .newmaterialid {
+        grid-column-end: span 12;
+    }
+
+    .materialid-titlerow-1 {
+        grid-column-end: span 3;
+    }
+    .materialid-titlerow-2 {
+        grid-column-end: span 9;
+    }
+
+}

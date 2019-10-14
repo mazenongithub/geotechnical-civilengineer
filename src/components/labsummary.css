@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1:500,600,700|Source+Sans+Pro:400,600&display=swap');
+.labsummary-linkcontainer,
+.title-row-med1b,
+.title-row-med1a,
+.title-row-1b,
+.title-row-1a,
+.title-row-2,
+.labsummary-medium-1a,
+.labsummary-medium-1b {
+    padding: 5px;
+}
+
+.labsummary-container {
+    display: grid;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+}
+
+.sieve-container,
+.samplenumber-container,
+.lab-container,
+.label-row-2,
+.labsummary-medium-1a,
+.labsummary-medium-1b,
+.labsummary-medium-3a,
+.labsummary-medium-3b,
+.labsummary-medium-2,
+.labsummary-small-1,
+.labsummary-small-2,
+.labsummary-small-3 {
+    border: 1px solid;
+}
+
+.title-row-med1b,
+.title-row-1b,
+.title-row-2,
+.sieve-container,
+.samplenumber-container,
+.lab-container,
+.label-row-2,
+.labsummary-medium-1a,
+.labsummary-medium-1b,
+.labsummary-medium-3a,
+.labsummary-medium-3b,
+.labsummary-medium-2,
+.labsummary-small-1,
+.labsummary-small-2,
+.labsummary-small-3 {
+    text-align: center;
+}
+
+.labsummary-linkcontainer {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #000000;
+    font-weight: 600;
+}
+
+.title-row-med1b,
+.title-row-med1a,
+.title-row-1b,
+.title-row-1a,
+.title-row-2,
+.sieve-container,
+.samplenumber-container,
+.lab-container,
+.label-row-2,
+.labsummary-medium-1a,
+.labsummary-medium-1b,
+.labsummary-medium-2,
+.labsummary-medium-3a,
+.labsummary-medium-3b,
+.labsummary-small-1,
+.labsummary-small-2,
+.labsummary-small-3 {
+    font-family: Gothic A1;
+    font-weight: 600;
+}
+
+.labsummary-container {
+    grid-template-columns: 16% 17% 17% 17% 17% 16%;
+    margin-top: 30px;
+}
+
+.title-row-2 {
+    font-size: 20px;
+    letter-spacing: 0.60px
+}
+
+.labsummary-small-1,
+.labsummary-small-2,
+.labsummary-small-3 {
+    font-size: 18px;
+    letter-spacing: -0.18px;
+}
+
+.title-row-med1b,
+.title-row-med1a,
+.labsummary-linkcontainer {
+    font-size: 20px;
+    letter-spacing: -0.20px;
+}
+
+.labsummary-small-1,
+.small-table,
+.labsummary-linkcontainer,
+.title-row-2 {
+    grid-column-end: span 6;
+}
+
+.labsummary-small-3 {
+    grid-column-end: span 3;
+}
+
+.labsummary-small-2 {
+    grid-column-end: span 2;
+}
+
+.title-row-med1a {
+    grid-column-end: span 2;
+}
+
+.title-row-med1b {
+    grid-column-end: span 4;
+}
+
+@media screen and (min-width:721px) {
+    .medium-table {
+        grid-column-end: span 6;
+
+    }
+    .title-row-med1b,
+    .title-row-med1a,
+    .labsummary-linkcontainer {
+        font-size: 24px;
+        letter-spacing: -0.24px;
+    }
+    .title-row-2 {
+        font-size: 24px;
+        letter-spacing: 0.72px
+    }
+    .labsummary-medium-3b,
+    .labsummary-medium-2 {
+        grid-column-end: span 2;
+    }
+    .labsummary-medium-1a {
+        grid-column-end: span 3;
+    }
+    .labsummary-container {
+        grid-template-columns: 16% 17% 17% 17% 17% 16%;
+    }
+    .labsummary-medium-1a,
+    .labsummary-medium-1b,
+    .labsummary-medium-3a,
+    .labsummary-medium-3b,
+    .labsummary-medium-2 {
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (min-width:1081px) {
+
+    .labsummary-container {
+        grid-template-columns: 8% 8% 9% 8% 8% 9% 8% 8% 9% 8% 8% 9%;
+        grid-row-gap: 0px;
+
+    }
+
+    .label-row-1 {
+        grid-column-end: span 5;
+    }
+
+    .sieve-container,
+    .label-row-3 {
+        grid-column-end: span 3;
+    }
+    .samplenumber-container,
+    .label-row-2 {
+        grid-column-end: span 2;
+    }
+    .title-row-2 {
+        grid-column-end: span 12;
+    }
+    .title-row-1a {
+        grid-column-end: span 4;
+    }
+    .title-row-1b {
+        grid-column-end: span 8;
+    }
+    .title-row-2 {
+        font-size: 30px;
+        letter-spacing: 0.9px;
+    }
+    .title-row-1b,
+    .title-row-1a {
+        font-size: 24px;
+        letter-spacing: -0.24px;
+    }
+    .lab-container,
+    .sieve-container,
+    .samplenumber-container,
+    .label-row-2 {
+        font-size: 20px;
+        letter-spacing: -0.48px;
+    }
+    .labsummary-linkcontainer {
+        grid-column-end: span 12;
+    }
+    .labsummary-linkcontainer {
+        font-size: 30px;
+        line-height: 28.8px;
+    }
+
+
+}
