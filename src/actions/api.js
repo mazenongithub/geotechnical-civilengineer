@@ -44,7 +44,7 @@ export async function getEngineer() {
 export async function CheckClientLogin() {
     
 
-    const APIURL = `${process.env.REACT_APP_SERVER_API}/geotechnical/checkclientid`;
+    const APIURL = `${process.env.REACT_APP_SERVER_API}/checkclientid`;
     console.log(APIURL)
     return fetch(APIURL)
         .then(resp => {
