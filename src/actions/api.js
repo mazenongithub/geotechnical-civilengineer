@@ -2,7 +2,7 @@
 /* global Headers */
 
 export async function LoadClient(clientid) {
-    const APIURL = `/api/${clientid}/loadclient`;
+    const APIURL = `${process.env.REACT_APP_SERVER_API}/geotechnical/${clientid}/loadclient`;
 
     return fetch(APIURL)
         .then(resp => {
@@ -22,7 +22,7 @@ export async function LoadClient(clientid) {
         })
 }
 export async function getEngineer() {
-    const APIURL = `/api/getengineers`;
+    const APIURL = `${process.env.REACT_APP_SERVER_API}/getengineers`;
     return fetch(APIURL)
         .then(resp => {
             if (!resp.ok) {
@@ -42,8 +42,12 @@ export async function getEngineer() {
 }
 
 export async function CheckClientLogin() {
-    const APIURL = `/api/checkclientlogin`;
-    return fetch(APIURL)
+    
+    const APIURL = `${process.env.REACT_APP_SERVER_API}/checkclientid`;
+    console.log(APIURL)
+    return fetch(APIURL, {
+        method: 'get',
+        credentials: 'same-origin'})
         .then(resp => {
             if (!resp.ok) {
                 if (resp.status >= 400 && resp.status < 500) {
@@ -62,10 +66,10 @@ export async function CheckClientLogin() {
 }
 
 export async function CreateNewProject(values) {
-    console.log(values)
+
     let clientid = values.clientid;
-    var APIURL = `/api/${clientid}/createnewproject`
-    console.log(APIURL)
+    var APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/createnewproject`
+
     return fetch(APIURL, {
             method: 'post',
             credentials: 'same-origin',
@@ -95,7 +99,7 @@ export async function CreateNewProject(values) {
 }
 export async function SaveClientData(clientid, values) {
 
-    var APIURL = `/api/${clientid}/saveclientdata`
+    var APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/saveclientdata`
 
     return fetch(APIURL, {
             method: 'post',
@@ -127,7 +131,7 @@ export async function SaveClientData(clientid, values) {
 
 export async function UpdateUserProfile(values) {
     let clientid = values.clientid;
-    let APIURL = `/api/${clientid}/updateuserprofile`
+    let APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/updateuserprofile`
     return fetch(APIURL, {
             method: 'post',
             credentials: 'same-origin',
@@ -156,7 +160,7 @@ export async function UpdateUserProfile(values) {
         })
 }
 export async function getProject(clientid, projectid) {
-    const APIURL = `/api/${clientid}/getproject/${projectid}`;
+    const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/getproject/${projectid}`;
     return fetch(APIURL)
         .then(resp => {
             if (!resp.ok) {
@@ -180,7 +184,7 @@ export async function getProject(clientid, projectid) {
 
 export async function CheckClientID(values) {
     let clientid = values.clientid;
-    const APIURL = `/api/${clientid}/checkclientid`;
+    const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/checkclientid`;
     return fetch(APIURL)
         .then(resp => {
             if (!resp.ok) {
@@ -199,8 +203,8 @@ export async function CheckClientID(values) {
         })
 }
 export async function getClient(clientid) {
-    const APIURL = `/api/${clientid}/getclient`;
-
+    const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/getclient`;
+console.log(APIURL)
     return fetch(APIURL)
         .then(resp => {
             if (!resp.ok) {
@@ -220,8 +224,8 @@ export async function getClient(clientid) {
 }
 export async function getMoreProjects(values) {
     let clientid = values.clientid;
-    console.log(values)
-    let APIURL = `/api/${clientid}/getmoreprojects`
+  
+    let APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/getmoreprojects`
     return fetch(APIURL, {
             method: 'post',
             credentials: 'same-origin',
@@ -606,7 +610,7 @@ export async function loadprojectbalance(clientid) {
 export async function ClientUpdateBudget(clientid, projectid) {
 
     var values = { clientid, projectid }
-    var APIURL = `/api/${clientid}/budget/${projectid}/authorize`
+    var APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/budget/${projectid}/authorize`
 
     return fetch(APIURL, {
             method: 'post',
@@ -801,7 +805,7 @@ export async function loadmyletters(clientid) {
 export async function handleToken(token, invoiceid, projectid, amount, description) {
     let bodystring = { token, invoiceid, projectid, amount, description }
 
-    let APIURL = `/api/${projectid}/stripe/${invoiceid}`
+    let APIURL = `${process.env.REACT_APP_SERVER_API}/${projectid}/stripe/${invoiceid}`
 
     return fetch(APIURL, {
             method: 'post',

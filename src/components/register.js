@@ -106,10 +106,10 @@ class Register extends Component {
         }
     }
     render() {
-        const formaction = `${process.env.REACT_APP_SERVER}/api/clientregister`
-        const googleredirect = `${process.env.REACT_APP_SERVER}/oauth20/google/login`;
+        const formaction = `${process.env.REACT_APP_SERVER_API}/api/clientregister`
+        const googleredirect = `${process.env.REACT_APP_SERVER_API}/oauth20/google/login`;
         const googlescope = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleredirect}&prompt=consent&response_type=code&client_id=${process.env.REACT_APP_GOOGLE_CLIENTID}&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&access_type=offline`
-        const yahooredirect = `${process.env.REACT_APP_SERVER}/oauth20/yahoo/login`;
+        const yahooredirect = `${process.env.REACT_APP_SERVER_API}/oauth20/yahoo/login`;
         const yahooscope = `https://api.login.yahoo.com/oauth2/request_auth?redirect_uri=${yahooredirect}&prompt=consent&response_type=code&client_id=${process.env.REACT_APP_YAHOO_CLIENTID}`
         return (<form action={formaction} method="post" onSubmit={event=>{this.handlesubmit(event)}}>
         <div class="register-container">
