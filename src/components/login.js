@@ -3,7 +3,7 @@ import './login.css';
 import { emailLogin, googleLogin, yahooIcon } from './svg'
 class Login extends Component {
     componentDidMount() {
-        console.log("login ", process.env.REACT_APP_SERVER_API)
+        console.log("login ", process.env.REACT_APP_TESTVAR)
 
     }
     render() {
