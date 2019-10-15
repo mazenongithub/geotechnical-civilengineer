@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './login.css';
 import { emailLogin, googleLogin, yahooIcon } from './svg'
 class Login extends Component {
+    componentDidMount() {
+        console.log("login ", process.env.REACT_APP_SERVER_API)
+
+    }
     render() {
         const formdestination = `${process.env.REACT_APP_SERVER_API}/api/clientlogin`;
         const googleredirect = `${process.env.REACT_APP_SERVER_API}/oauth20/google/login`;

@@ -2,7 +2,7 @@
 /* global Headers */
 
 export async function LoadClient(clientid) {
-    const APIURL = `${process.env.REACT_APP_SERVER_API}/geotechnical/${clientid}/loadclient`;
+    const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/loadclient`;
 
     return fetch(APIURL)
         .then(resp => {
@@ -42,8 +42,8 @@ export async function getEngineer() {
 }
 
 export async function CheckClientLogin() {
-     const APIURL = `https://api.civilengineer.io`;
-    console.log(APIURL)
+     const APIURL = `${process.env.REACT_APP_SERVER_API}/checkclientid`;
+    
     return fetch(APIURL)
         .then(resp => {
             if (!resp.ok) {
