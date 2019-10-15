@@ -4,6 +4,7 @@ import { emailLogin, googleLogin, yahooIcon } from './svg'
 class Login extends Component {
     componentDidMount() {
         console.log("ENV", process.env.NODE_ENV)
+        
 
     }
     render() {
