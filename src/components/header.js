@@ -72,8 +72,8 @@ class Header extends(Component) {
     if (this.props.myusermodel) {
       if (this.props.myusermodel.hasOwnProperty("clientid")) {
         //loggedin
-        let clientid = this.props.myusermodel.className;
-        let backendapi = `${process.env.REACT_APP_SERVER}/geotechnical/${clientid}/clientlogout`
+        let clientid = this.props.myusermodel.clientid;
+        let backendapi = `${process.env.REACT_APP_SERVER}/${clientid}/clientlogout`
         return (<p><a href={backendapi} className="nav-link">logout </a></p>)
       }
       else {
