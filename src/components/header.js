@@ -68,12 +68,13 @@ class Header extends(Component) {
 
   }
   menu_3() {
-
+console.log("menu_3")
     if (this.props.myusermodel) {
       if (this.props.myusermodel.hasOwnProperty("clientid")) {
         //loggedin
         let clientid = this.props.myusermodel.clientid;
-        let backendapi = `${process.env.REACT_APP_SERVER}/${clientid}/clientlogout`
+        let backendapi = `${process.env.REACT_APP_SERVER_API}/${clientid}/clientlogout`
+        console.log("77",backendapi, process.env.REACT_APP_SERVER_API)
         return (<p><a href={backendapi} className="nav-link">logout </a></p>)
       }
       else {
