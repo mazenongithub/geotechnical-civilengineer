@@ -4,7 +4,8 @@
 export async function LoadClient(clientid) {
     const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/loadclient`;
 
-    return fetch(APIURL)
+    return fetch(APIURL,{credentials:
+   'include' })
         .then(resp => {
             if (!resp.ok) {
                 if (resp.status >= 400 && resp.status < 500) {
@@ -23,7 +24,7 @@ export async function LoadClient(clientid) {
 }
 export async function getEngineer() {
     const APIURL = `${process.env.REACT_APP_SERVER_API}/getengineers`;
-    return fetch(APIURL)
+    return fetch(APIURL,{credentials:'include'})
         .then(resp => {
             if (!resp.ok) {
                 if (resp.status >= 400 && resp.status < 500) {
@@ -44,7 +45,7 @@ export async function getEngineer() {
 export async function CheckClientLogin() {
      const APIURL = `${process.env.REACT_APP_SERVER_API}/checkclientid`;
     
-    return fetch(APIURL)
+    return fetch(APIURL,{credentials:'include'})
         .then(resp => {
             if (!resp.ok) {
                 if (resp.status >= 400 && resp.status < 500) {
@@ -69,7 +70,7 @@ export async function CreateNewProject(values) {
 
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -100,7 +101,7 @@ export async function SaveClientData(clientid, values) {
 
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -131,7 +132,7 @@ export async function UpdateUserProfile(values) {
     let APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/updateuserprofile`
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -158,7 +159,7 @@ export async function UpdateUserProfile(values) {
 }
 export async function getProject(clientid, projectid) {
     const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/getproject/${projectid}`;
-    return fetch(APIURL)
+    return fetch(APIURL,{credentials:'include'})
         .then(resp => {
             if (!resp.ok) {
                 if (resp.status >= 400 && resp.status < 500) {
@@ -182,7 +183,7 @@ export async function getProject(clientid, projectid) {
 export async function CheckClientID(values) {
     let clientid = values.clientid;
     const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/checkclientid`;
-    return fetch(APIURL)
+    return fetch(APIURL,{credentials:'include'})
         .then(resp => {
             if (!resp.ok) {
                 if (resp.status >= 400 && resp.status < 500) {
@@ -203,7 +204,7 @@ export async function getClient(clientid) {
                                   
     const APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/getclient`;
 console.log(APIURL)
-    return fetch(APIURL)
+    return fetch(APIURL,{credentials:'include'})
         .then(resp => {
             if (!resp.ok) {
                 if (resp.status >= 400 && resp.status < 500) {
@@ -226,7 +227,7 @@ export async function getMoreProjects(values) {
     let APIURL = `${process.env.REACT_APP_SERVER_API}/${clientid}/getmoreprojects`
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -258,7 +259,7 @@ export async function findfigure(projectid, figurenumber) {
 
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -283,7 +284,7 @@ export async function findfieldreport(fieldid) {
 
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -305,7 +306,7 @@ export async function deletemyclientevent(eventid) {
     var APIURL = "/googlecalendar/" + eventid + "/deleteevent"
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin',
+            credentials: 'include',
 
         })
         .then(resp => {
@@ -329,7 +330,7 @@ export async function updategooglecalendarevent(values) {
     var APIURL = "/googlecalendar/updatevent"
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -358,7 +359,7 @@ export async function insertgooglecalendarevent(values) {
     var APIURL = "/googlecalendar/insertevent"
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -387,7 +388,7 @@ export async function getclientprojectlist(clientid) {
     var APIURL = "/getclientprojectlist/request/" + clientid
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -411,7 +412,7 @@ export async function loadmyclientevents(clientid) {
     var APIURL = "/googlecalendar/" + clientid + "/showmyevents"
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -433,7 +434,7 @@ export async function deletemyservicerequest(values) {
     var APIURL = "/servicerequest/request/delete"
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -461,7 +462,7 @@ export async function insertmyservicerequest(values) {
     var APIURL = "/servicerequest/insertupdate"
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -488,7 +489,7 @@ export async function findmyservicerequest(servicerequest) {
     var APIURL = "/servicerequest/" + servicerequest + "/show"
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -510,7 +511,7 @@ export async function loadmyservicerequests(clientid) {
     var APIURL = "/servicerequest/" + clientid + "/showall"
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -534,7 +535,7 @@ export async function handleTokenProject(token, projectid, amount) {
     var APIURL = "/api/stripe/project"
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -563,7 +564,7 @@ export async function showprojectbalance(projectid) {
 
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -587,7 +588,7 @@ export async function loadprojectbalance(clientid) {
     var APIURL = "/" + clientid + "/balance/" + offset
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -612,7 +613,7 @@ export async function ClientUpdateBudget(clientid, projectid) {
 
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -641,7 +642,7 @@ export async function loadmyclientsbudget(clientid) {
 
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -665,7 +666,7 @@ export async function showmyclientsbudget(projectid) {
 
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -689,7 +690,7 @@ export async function loadlabsummary(projectid) {
 
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -712,7 +713,7 @@ export async function showmyinvoice(invoiceid) {
     var APIURL = "/invoice/ " + invoiceid + "/show"
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -735,7 +736,7 @@ export async function loadmyinvoices(clientid) {
     var APIURL = "/invoice/" + clientid + "/getall"
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -758,7 +759,7 @@ export async function itsgetletterbyid(letterid) {
     var APIURL = "/letters/" + letterid + "/show"
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -781,7 +782,7 @@ export async function loadmyletters(clientid) {
     var APIURL = "/letters/" + clientid + "/getall"
     return fetch(APIURL, {
             method: 'get',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
         .then(resp => {
             if (!resp.ok) {
@@ -807,7 +808,7 @@ export async function handleToken(token, invoiceid, projectid, amount, descripti
 
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -835,7 +836,7 @@ export async function updateUser(val) {
     var APIURL = "/api/current_user/update"
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -863,7 +864,7 @@ export async function updateUserpassword(val) {
     var APIURL = "/api/current_user/passwordupdate"
     return fetch(APIURL, {
             method: 'post',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
