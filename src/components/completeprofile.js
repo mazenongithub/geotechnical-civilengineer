@@ -320,7 +320,7 @@ class CompleteProfile extends Component {
         return gender;
     }
     render() {
-        const formaction = `${process.env.REACT_APP_SERVER}/${this.props.match.params.clientid}/updateclientregister`
+        const formaction = `${process.env.REACT_APP_SERVER_API}/${this.props.match.params.clientid}/updateclientregister`
 
         return (<form action={formaction} method="post" onSubmit={event => { this.handlesubmit(event) }}>
             <div class="register-container">
