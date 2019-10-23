@@ -38,18 +38,20 @@ class Register extends Component {
     handleclientid(clientid) {
         clientid = clientid.toLowerCase()
         let errmsg = validateClientID(clientid);
-        let message = `Your Profile will appear as ${process.env.REACT_APP_CLIENT}/${this.state.clientid}`
         if (errmsg) {
             this.setState({ clientid, errmsg, message: errmsg })
         }
         else {
-            this.setState({ clientid, errmsg: "", message })
+            this.setState({ clientid, errmsg: "", message: "" })
         }
 
     }
     showclienturl() {
-        if (this.state.clientid) {
+        if (this.state.message) {
             return (<div className="register-full">{this.state.message}</div>)
+        } else if (this.state.clientid) {
+            let clientid = this.state.clientid;
+            return (<div className="register-full">Your Profile Will Appear as Your Profile will appear as {process.env.REACT_APP_CLIENT}/{clientid}</div>)
         }
     }
 
