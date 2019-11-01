@@ -316,7 +316,7 @@ class CompleteProfile extends Component {
             }
 
         }
-        console.log(gender)
+
         return gender;
     }
     render() {

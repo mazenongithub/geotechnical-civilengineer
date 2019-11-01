@@ -30,9 +30,10 @@ import {
   inputtimeDBoutputCalendarDaySeconds,
   TimeDBBaseDateObj,
   inputDateSecActiveIDTimein,
-  formatTimeTest
+  formatTimeTest,
+  getTimezoneUTCString
 }
-from './functions';
+  from './functions';
 import { inputDateObjStripTimeOutputObj } from './form/functions';
 
 import { saveEvent, startNewEvent, removeEvent } from './svg';
@@ -115,8 +116,8 @@ class Events extends Component {
         this.props.projects.map(myproject => {
           if (myproject.projectid === projectid) {
 
-            titlerow.push(<span>{`Project Number ${myproject.projectnumber} ${myproject.title}`} <br/></span>);
-            titlerow.push(<span>{`${myproject.projectaddress} ${myproject.projectcity}`} <br/></span>);
+            titlerow.push(<span>{`Project Number ${myproject.projectnumber} ${myproject.title}`} <br /></span>);
+            titlerow.push(<span>{`${myproject.projectaddress} ${myproject.projectcity}`} <br /></span>);
             titlerow.push(<span>Events</span>);
 
           }
@@ -222,12 +223,12 @@ class Events extends Component {
               myproject.events.event.map(myevent => {
 
                 events.push(<div className="event-titlerow">
-                        <div className="eventid-container"> 
-                            <div onClick={event=>{this.handleevent(myevent.eventid)}} className="findevent-container">
-                            EventID {myevent.eventid} {this.geteventfromid(myevent.eventid)} </div>
-                            <div className="removeevent-container"><button className="btn-removeevent" onClick={event=>{this.removeevent(myevent.eventid)}}> {removeEvent()} </button></div> 
-                        </div>
-                    </div>)
+                  <div className="eventid-container">
+                    <div onClick={event => { this.handleevent(myevent.eventid) }} className="findevent-container">
+                      EventID {myevent.eventid} {this.geteventfromid(myevent.eventid)} </div>
+                    <div className="removeevent-container"><button className="btn-removeevent" onClick={event => { this.removeevent(myevent.eventid) }}> {removeEvent()} </button></div>
+                  </div>
+                </div>)
               })
             }
           }
@@ -295,12 +296,14 @@ class Events extends Component {
     }
   }
   getdatemessage() {
+
     let datemessage = "";
     let dateobj = {};
     if (this.state.activeeventid) {
       let times = this.gettimeinfromeventid(this.state.activeeventid);
       let timein = times[0];
-      dateobj = new Date(`${timein.replace(/-/g, '/')}-07:00`)
+      let offsetfactor = getTimezoneUTCString(timein);
+      dateobj = new Date(`${timein.replace(/-/g, '/')}-${offsetfactor}`)
     }
     else {
       dateobj = this.state.datein;
@@ -384,15 +387,15 @@ class Events extends Component {
 
   }
   handlestarttime() {
-    return (<div className={`starttime-container ${this.getstartactivetime()}`} onClick={event=>{this.activestarttime(event)}}>Please Select A Start Time </div>)
+    return (<div className={`starttime-container ${this.getstartactivetime()}`} onClick={event => { this.activestarttime(event) }}>Please Select A Start Time </div>)
   }
   handleendtime() {
-    return (<div className={`starttime-container ${this.getendactivetime()}`} onClick={event=>{this.activeendtime(event)}}>Please Select An End Time </div>)
+    return (<div className={`starttime-container ${this.getendactivetime()}`} onClick={event => { this.activeendtime(event) }}>Please Select An End Time </div>)
   }
   createnewbutton() {
     if (this.state.activeeventid) {
 
-      return (<div className="event-titlerow"><button className="button-events" onClick={event=>this.cleareventid()}>{startNewEvent()} </button></div>)
+      return (<div className="event-titlerow"><button className="button-events" onClick={event => this.cleareventid()}>{startNewEvent()} </button></div>)
     }
     else {
       return (<span> &nbsp;</span>)
@@ -587,13 +590,17 @@ class Events extends Component {
     return value;
   }
   handleChange(newdate) {
+
     newdate = newdate.replace(/-/g, '/');
-    let dateobj = new Date(`${newdate} 00:00:00-07:00`);
+    let basetime = `${newdate} 00:00:00`
+    let offsetfactor = getTimezoneUTCString(basetime);
+    let dateobj = new Date(`${newdate} 00:00:00-${offsetfactor}`);
 
     if (this.state.activeeventid) {
       let eventid = this.state.activeeventid;
       let projectid = this.props.match.params.projectid
       let times = this.gettimeinfromeventid(eventid)
+
       let timein = times[0]
       let timeout = times[1]
 
@@ -698,8 +705,8 @@ class Events extends Component {
 
       let times = this.gettimeinfromeventid(eventid);
       let timein = times[0];
-
-      let datein = new Date(`${timein.replace(/-/g, '/')}-07:00`);
+      let offsetfactor = getTimezoneUTCString(timein);
+      let datein = new Date(`${timein.replace(/-/g, '/')}-${offsetfactor}`);
 
 
       let yearin = datein.getFullYear();
@@ -734,6 +741,7 @@ class Events extends Component {
 
   }
   handleyeardown() {
+
     if (this.state.datein) {
 
       let dateobj = this.state.datein
@@ -752,7 +760,9 @@ class Events extends Component {
       hours = trailingzero(hours);
       let minutes = dateobj.getMinutes();
       minutes = trailingzero(minutes);
-      let timestring = `${year}/${month}/${day} ${hours}:${minutes}:00-07:00`;
+      let baseoffset = `${year}/${month}/${day} ${hours}:${minutes}:00`
+      let offsetfactor = getTimezoneUTCString(baseoffset)
+      let timestring = `${year}/${month}/${day} ${hours}:${minutes}:00-${offsetfactor}`;
       let datein = new Date(timestring);
 
       this.setState({ datein });
@@ -762,14 +772,15 @@ class Events extends Component {
   }
 
   yearup(event) {
+
     if (this.props.activeeventid) {
       if (this.state.activeeventid) {
         let eventid = this.state.activeeventid;
 
         let times = this.gettimeinfromeventid(eventid);
         let timein = times[0];
-
-        let datein = new Date(`${timein.replace(/-/g, '/')}-07:00`);
+        let offsetfactor = getTimezoneUTCString(timein)
+        let datein = new Date(`${timein.replace(/-/g, '/')}-${offsetfactor}`);
 
 
         let yearin = datein.getFullYear();
@@ -825,7 +836,9 @@ class Events extends Component {
       hours = trailingzero(hours);
       let minutes = dateobj.getMinutes();
       minutes = trailingzero(minutes);
-      let timestring = `${year}/${month}/${day} ${hours}:${minutes}:00-07:00`;
+      let baseoffset = `${year}/${month}/${day} ${hours}:${minutes}:00`
+      let offsetfactor = getTimezoneUTCString(baseoffset)
+      let timestring = `${year}/${month}/${day} ${hours}:${minutes}:00-${offsetfactor}`;
       let datein = new Date(timestring);
 
       this.setState({ datein });
@@ -843,8 +856,8 @@ class Events extends Component {
 
       let times = this.gettimeinfromeventid(eventid);
       let timein = times[0];
-
-      let datein = new Date(`${timein.replace(/-/g, '/')}-07:00`);
+      let offsetfactor = getTimezoneUTCString(timein)
+      let datein = new Date(`${timein.replace(/-/g, '/')}-${offsetfactor}`);
 
 
       let yearin = datein.getFullYear();
@@ -907,7 +920,9 @@ class Events extends Component {
         hours = trailingzero(hours);
         minutes = trailingzero(minutes);
         month = trailingzero(month)
-        let timestring = `${year}/${month}/${day} ${hours}:${minutes}:00-07:00`;
+        let baseoffset = `${year}/${month}/${day} ${hours}:${minutes}:00`
+        let offsetfactor = getTimezoneUTCString(baseoffset)
+        let timestring = `${year}/${month}/${day} ${hours}:${minutes}:00-${offsetfactor}`;
 
         let datein = new Date(timestring);
 
@@ -917,14 +932,15 @@ class Events extends Component {
 
   }
   increasemonth(event) {
+
     if (this.state.activeeventid) {
 
       let eventid = this.state.activeeventid;
 
       let times = this.gettimeinfromeventid(eventid);
       let timein = times[0];
-
-      let datein = new Date(`${timein.replace(/-/g, '/')}-07:00`);
+      let offsetfactor = getTimezoneUTCString(timein)
+      let datein = new Date(`${timein.replace(/-/g, '/')}-${offsetfactor}`);
 
 
       let yearin = datein.getFullYear();
@@ -974,7 +990,8 @@ class Events extends Component {
 
       let times = this.gettimeinfromeventid(eventid);
       let timein = times[0];
-      let datein = new Date(`${timein.replace(/-/g, '/')}-07:00`)
+      let offsetfactor = getTimezoneUTCString(timein)
+      let datein = new Date(`${timein.replace(/-/g, '/')}-${offsetfactor}`)
       showgrid.push(this.showgridcalender(datein))
 
     }
@@ -1025,11 +1042,13 @@ class Events extends Component {
 
   }
   showdateforcalendar() {
+
     if (this.state.activeeventid) {
       let eventid = this.state.activeeventid;
       let times = this.gettimeinfromeventid(eventid);
       let timein = times[0];
-      return (formatDateforCalendarDisplay(new Date(`${timein.replace(/-/g, '/')}-07:00`)))
+      let offsetfactor = getTimezoneUTCString(timein)
+      return (formatDateforCalendarDisplay(new Date(`${timein.replace(/-/g, '/')}-${offsetfactor}`)))
     }
     else
 
@@ -1038,46 +1057,46 @@ class Events extends Component {
 
   }
   DateIn() {
-    return (<div className="datein-container"> 
-    <div className="datein-element-1a">
-    Enter Date <br/> <input type="date" 
-    value={this.getvalue()}
-    className="project-field"
-    onChange={event=>{this.handleChange(event.target.value)}}/>
-    </div>
-    <div className="datein-element-1b">
-    <button className="datebutton"
-    onClick={event=>{this.showCalender(event)}}
-    id="btn-opendatemenu">
-    <img alt="open menu"
-    name="btnopendatemenu"
-    src="https://www.egeotechnical.com/itisprojectmanagement/svg/openmenu.svg"/> 
-    </button>
-    <button className="datebutton" id="btn-closedatemenu">
-    <img alt="close menu"
-    src="https://www.egeotechnical.com/itisprojectmanagement/svg/closemenu.svg"
-    name="btn-closemenu"
-     onClick={event=>{this.hideCalendar(event)}}/>
-    </button>
-    </div>
-        <div className="material-buttonrow"><button className="datebutton"
-        onClick={event=>{this.yeardown(event)}}><img src="https://www.egeotechnical.com/itisprojectmanagement/svg/dateyeardown.svg" alt="year down"/> </button></div>
-        <div className="material-buttonrow">
+    return (<div className="datein-container">
+      <div className="datein-element-1a">
+        Enter Date <br /> <input type="date"
+          value={this.getvalue()}
+          className="project-field"
+          onChange={event => { this.handleChange(event.target.value) }} />
+      </div>
+      <div className="datein-element-1b">
         <button className="datebutton"
-        onClick={event=>{this.decreasemonth(event)}}><img src="https://www.egeotechnical.com/itisprojectmanagement/svg/datemonthdown.svg" alt="nonth down"/> </button> </div>
-        <div className="material-buttonrow displaydate">{this.showdateforcalendar()} </div>
-        <div className="material-buttonrow"
-        onClick={event=>{this.increasemonth(event)}}><button className="datebutton"> <img src="https://www.egeotechnical.com/itisprojectmanagement/svg/datemonthup.svg" alt="month up" /></button> </div>
-        <div className="material-buttonrow">
+          onClick={event => { this.showCalender(event) }}
+          id="btn-opendatemenu">
+          <img alt="open menu"
+            name="btnopendatemenu"
+            src="https://www.egeotechnical.com/itisprojectmanagement/svg/openmenu.svg" />
+        </button>
+        <button className="datebutton" id="btn-closedatemenu">
+          <img alt="close menu"
+            src="https://www.egeotechnical.com/itisprojectmanagement/svg/closemenu.svg"
+            name="btn-closemenu"
+            onClick={event => { this.hideCalendar(event) }} />
+        </button>
+      </div>
+      <div className="material-buttonrow"><button className="datebutton"
+        onClick={event => { this.yeardown(event) }}><img src="https://www.egeotechnical.com/itisprojectmanagement/svg/dateyeardown.svg" alt="year down" /> </button></div>
+      <div className="material-buttonrow">
         <button className="datebutton"
-        onClick={event=>{this.yearup(event)}}><img src="https://www.egeotechnical.com/itisprojectmanagement/svg/dateyearup.svg"  alt="year up"/> </button> </div>
-    	
-    	<div className="dateincalendar-container">
-    	    <div className="calendar-grid">
-			{this.showgrid()}
-			</div>
-		</div>
-</div>)
+          onClick={event => { this.decreasemonth(event) }}><img src="https://www.egeotechnical.com/itisprojectmanagement/svg/datemonthdown.svg" alt="nonth down" /> </button> </div>
+      <div className="material-buttonrow displaydate">{this.showdateforcalendar()} </div>
+      <div className="material-buttonrow"
+        onClick={event => { this.increasemonth(event) }}><button className="datebutton"> <img src="https://www.egeotechnical.com/itisprojectmanagement/svg/datemonthup.svg" alt="month up" /></button> </div>
+      <div className="material-buttonrow">
+        <button className="datebutton"
+          onClick={event => { this.yearup(event) }}><img src="https://www.egeotechnical.com/itisprojectmanagement/svg/dateyearup.svg" alt="year up" /> </button> </div>
+
+      <div className="dateincalendar-container">
+        <div className="calendar-grid">
+          {this.showgrid()}
+        </div>
+      </div>
+    </div>)
   }
   activeeventidsettime(timeinsec) {
     let eventid = this.state.activeeventid;
@@ -1321,6 +1340,7 @@ class Events extends Component {
     return (`/${clientid}/projects/${projectid}`)
   }
   checkbooked(j) {
+
     // check if its active event
     let checkbooked = false;
     if (this.props.engineers) {
@@ -1332,8 +1352,9 @@ class Events extends Component {
             if (engineer.hasOwnProperty("scheduleitems")) {
               // eslint-disable-next-line
               engineer.scheduleitems.scheduleitem.map(item => {
-                let timeinsec = new Date(`${item.timein.replace(/-/g, '/')}-07:00`).getTime();
-                let timeoutsec = new Date(`${item.timeout.replace(/-/g, '/')}-07:00`).getTime();
+                let offsetfactor = getTimezoneUTCString(item.timein)
+                let timeinsec = new Date(`${item.timein.replace(/-/g, '/')}-${offsetfactor}`).getTime();
+                let timeoutsec = new Date(`${item.timeout.replace(/-/g, '/')}-${offsetfactor}`).getTime();
                 if (timeinsec <= j && timeoutsec >= j) {
                   checkbooked = true;
                 }
@@ -1351,8 +1372,9 @@ class Events extends Component {
       let times = this.gettimeinfromeventid(eventid);
       let timein = times[0];
       let timeout = times[1];
-      let timeinsec = new Date(`${timein.replace(/-/g, '/')}-07:00`).getTime();
-      let timeoutsec = new Date(`${timeout.replace(/-/g, '/')}-07:00`).getTime();
+      let offsetfactor = getTimezoneUTCString(timein);
+      let timeinsec = new Date(`${timein.replace(/-/g, '/')}-${offsetfactor}`).getTime();
+      let timeoutsec = new Date(`${timeout.replace(/-/g, '/')}-${offsetfactor}`).getTime();
 
       if (timeinsec <= j && timeoutsec >= j) {
         checkbooked = false;
@@ -1390,9 +1412,9 @@ class Events extends Component {
         status = "not-available"
       }
       else
-      if (j < now) {
-        status = "expired"
-      }
+        if (j < now) {
+          status = "expired"
+        }
 
     }
 
@@ -1400,10 +1422,10 @@ class Events extends Component {
 
     switch (status) {
       case "available":
-        return (<div 
-      key={j} id={j}
-      className={`${this.getminuteclass(j)}`} 
-      onClick={event=>{this.settimeinterval(event.target.id)}}>{getTimeFromDateObj(new Date(j))} </div>)
+        return (<div
+          key={j} id={j}
+          className={`${this.getminuteclass(j)}`}
+          onClick={event => { this.settimeinterval(event.target.id) }}>{getTimeFromDateObj(new Date(j))} </div>)
       case "expired":
         return (<div className="minutes-expired"> Expired - {getTimeFromDateObj(new Date(j))}  </div>)
       case "previous-event":
@@ -1476,7 +1498,7 @@ class Events extends Component {
     let schedulemodel = ScheduleModel(itemid,
       projectid,
       engineerid,
-      `${engineer.firstname} ${engineer.lastname }`,
+      `${engineer.firstname} ${engineer.lastname}`,
       detail,
       engineer.rate,
       "",
@@ -1735,16 +1757,18 @@ class Events extends Component {
 
 
       let dayzero = trailingzero(day);
-      let timestring = `${year}/${month}/${dayzero} 00:00:00-07:00`;
+      let baseoffset = `${year}/${month}/${dayzero} 00:00:00`;
+      let offsetfactor = getTimezoneUTCString(baseoffset)
+      let timestring = `${year}/${month}/${dayzero} 00:00:00-${offsetfactor}`;
 
       let calendardate = new Date(timestring);
 
       let dateencoded = calendardate.getTime();
 
-      showday.push(<div 
-		className={`${this.getactivedate(dateencoded)} calendar-date`}
-		onClick={event=>{this.setDay(dateencoded)}}
-		> {day}</div>)
+      showday.push(<div
+        className={`${this.getactivedate(dateencoded)} calendar-date`}
+        onClick={event => { this.setDay(dateencoded) }}
+      > {day}</div>)
     }
     return showday;
   }
@@ -1763,37 +1787,37 @@ class Events extends Component {
     days.map((day, i) => {
       if (i === 0) {
         gridcalender.push(<div className="calendar-element daydisplay">
-							Mon
+          Mon
 							</div>)
       }
       else if (i === 1) {
         gridcalender.push(<div className="calendar-element daydisplay">
-							Tues
+          Tues
 							</div>)
       }
       else if (i === 2) {
         gridcalender.push(<div className="calendar-element daydisplay">
-							Weds
+          Weds
 							</div>)
       }
       else if (i === 3) {
         gridcalender.push(<div className="calendar-element daydisplay">
-							Thurs
+          Thurs
 							</div>)
       }
       else if (i === 4) {
         gridcalender.push(<div className="calendar-element daydisplay">
-							Fri
+          Fri
 							</div>)
       }
       else if (i === 5) {
         gridcalender.push(<div className="calendar-element daydisplay">
-							Sat
+          Sat
 							</div>)
       }
       else if (i === 6) {
         gridcalender.push(<div className="calendar-element daydisplay">
-							Sun
+          Sun
 							</div>)
       }
       else if (i === 7) {
@@ -1806,7 +1830,7 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}&nbsp;
+          {display}&nbsp;
 							</div>)
 
       }
@@ -1823,8 +1847,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
 
       else if (i === 9) {
@@ -1843,8 +1867,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
 
       }
       else if (i === 10) {
@@ -1866,8 +1890,8 @@ class Events extends Component {
             break
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
 
 
       }
@@ -1893,8 +1917,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display} 
-							</div>)
+          {display}
+        </div>)
 
       }
       else if (i === 12) {
@@ -1923,8 +1947,8 @@ class Events extends Component {
         }
 
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
 
 
       }
@@ -1958,8 +1982,8 @@ class Events extends Component {
 
 
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
 
       }
       else if (i === 14) {
@@ -1990,8 +2014,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 15) {
         let display = " ";
@@ -2021,8 +2045,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 16) {
         let display = " ";
@@ -2052,8 +2076,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 17) {
         let display = " ";
@@ -2083,8 +2107,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 18) {
         let display = " ";
@@ -2114,8 +2138,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 19) {
         let display = " ";
@@ -2145,8 +2169,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 20) {
         let display = " ";
@@ -2176,8 +2200,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 21) {
         let display = " ";
@@ -2207,8 +2231,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-													{display}
-													</div>)
+          {display}
+        </div>)
       }
       else if (i === 22) {
         let display = " ";
@@ -2238,8 +2262,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 23) {
         let display = " ";
@@ -2269,8 +2293,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 24) {
         let display = " ";
@@ -2300,8 +2324,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 25) {
         let display = " ";
@@ -2331,8 +2355,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 26) {
         let display = " ";
@@ -2362,8 +2386,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 27) {
         let display = " ";
@@ -2393,8 +2417,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 28) {
         let display = " ";
@@ -2424,8 +2448,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 29) {
         let display = " ";
@@ -2455,8 +2479,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 30) {
         let display = " ";
@@ -2486,8 +2510,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 31) {
         let display = " ";
@@ -2517,8 +2541,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 32) {
         let display = " ";
@@ -2548,8 +2572,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 33) {
         let display = " ";
@@ -2579,8 +2603,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 34) {
         let display = " ";
@@ -2610,8 +2634,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 35) {
         let display = " ";
@@ -2641,8 +2665,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 36) {
         let display = " ";
@@ -2672,8 +2696,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 37) {
         let display = " ";
@@ -2703,8 +2727,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 38) {
         let display = " ";
@@ -2733,8 +2757,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 39) {
         let display = " ";
@@ -2762,8 +2786,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 40) {
         let display = " ";
@@ -2790,8 +2814,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 41) {
         let display = " ";
@@ -2817,8 +2841,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 42) {
         let display = " ";
@@ -2843,8 +2867,8 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else if (i === 43) {
         let display = " ";
@@ -2868,12 +2892,12 @@ class Events extends Component {
             break;
         }
         gridcalender.push(<div className="calendar-element daydisplay">
-							{display}
-							</div>)
+          {display}
+        </div>)
       }
       else {
         gridcalender.push(<div className="calendar-element daydisplay">
-							&nbsp;
+          &nbsp;
 							</div>)
       }
     })
@@ -2883,23 +2907,23 @@ class Events extends Component {
     if (this.props.projects) {
       if (this.props.projects.hasOwnProperty("length")) {
         return (<div className="event-container">
-         <div className="event-titlerow">{this.gettitlerow()} </div>
+          <div className="event-titlerow">{this.gettitlerow()} </div>
           <div className="event-datecontainer"><Link to={this.getlinktoprojects()} className="project-link"> {` << Back to Project `} </Link> </div>
           <div className="event-titlerow">{this.createnewbutton()} </div>
           <div className="event-datecontainer">{this.DateIn()}</div>
           <div className="event-titlerow">{this.getdatemessage()} </div>
           <div className="event-titlerow">{this.handlestarttime()} </div>
           <div className="event-titlerow">{this.handleendtime()}  </div>
-          
-          
-         {this.showtime()}
-         
-         <div className="event-datecontainer">
-         Event Detail <br/>
-         <textarea className="project-field" value={this.geteventdetail()} onChange={event=>{this.handleeventdetail(event.target.value)}}> </textarea> </div>
-        <div className="event-titlerow"><button className="button-events" onClick={event=>{this.saveclient()}}>{saveEvent()} </button></div>
-         <div className="event-datecontainer">{this.state.message}</div>
-         {this.showevents()}
+
+
+          {this.showtime()}
+
+          <div className="event-datecontainer">
+            Event Detail <br />
+            <textarea className="project-field" value={this.geteventdetail()} onChange={event => { this.handleeventdetail(event.target.value) }}> </textarea> </div>
+          <div className="event-titlerow"><button className="button-events" onClick={event => { this.saveclient() }}>{saveEvent()} </button></div>
+          <div className="event-datecontainer">{this.state.message}</div>
+          {this.showevents()}
         </div>)
       }
       else {

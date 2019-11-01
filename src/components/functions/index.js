@@ -5,6 +5,24 @@ export function sortDecending(a, b) {
 export function sortAscending(a, b) {
     return a - b;
 }
+export function getTimezoneUTCString(timein) {
+    //let timein = '2019-11-30 19:11:00';
+    let offsetfactor = '';
+    let datein = new Date(timein.replace(/-/g, '/'))
+    let baseyear = datein.getFullYear();
+    let basedatestring = `${baseyear}/01/01`;
+    let basedate = new Date(basedatestring);
+    let baseoffset = basedate.getTimezoneOffset();
+    let offset = datein.getTimezoneOffset();
+    offset = Math.abs(offset)
+    baseoffset = Math.abs(baseoffset);
+    if (offset < baseoffset) {
+        offsetfactor = '07:00'
+    } else {
+        offsetfactor = '08:00'
+    }
+    return offsetfactor;
+}
 export function MyUserModel(clientid, firstname, lastname, gender, company, address, city, contactstate, zipcode, emailaddress, phonenumber) {
     return ({ clientid, firstname, lastname, gender, company, address, city, contactstate, zipcode, emailaddress, phonenumber })
 }
@@ -163,8 +181,8 @@ export function returnSieve(gravfrac, sandfrac, fines) {
 }
 export function calendarDateObj(timein) {
     timein = timein.replace(/-/g, '/');
-
-    let eventdate = new Date(`${timein}-07:00`)
+    let offset = getTimezoneUTCString(timein)
+    let eventdate = new Date(`${timein}-${offset}`)
     let calendarmonth = eventdate.getMonth() + 1;
     let calendaryear = eventdate.getFullYear()
     let calendarday = eventdate.getDate();
@@ -220,12 +238,12 @@ export function validateClientID(value) {
     value = value.trim();
     let errmsg = "";
     if (value.length > 36) {
-       errmsg= " Client should be less than 36 characters";
+        errmsg = " Client should be less than 36 characters";
     }
     else if (!test) {
-        errmsg= `${value} has an invalid format`;
+        errmsg = `${value} has an invalid format`;
     } else {
-        errmsg="";
+        errmsg = "";
     }
 
     return errmsg;
@@ -236,7 +254,8 @@ export function ClientProject(clientid, projectid, projectnumber, series, title,
 export function inputUTCStringOutputDateString(timeout) {
     timeout = timeout.replace(/-/g, '/');
     // timeout = '2018-12-31T22:56:00-08:00';
-    let dateobj = new Date(`${timeout}-07:00`);
+    let offset = getTimezoneUTCString(timeout)
+    let dateobj = new Date(`${timeout}-${offset}`);
 
     let day = dateobj.getDate();
 
@@ -259,7 +278,8 @@ export function inputUTCStringOutputDateString(timeout) {
 export function formatTimefromDBFull(timestring) {
 
     timestring = timestring.replace(/-/g, '/');
-    timestring = `${timestring}-07:00`
+    let offset = getTimezoneUTCString(timestring)
+    timestring = `${timestring}-${offset}`
     let newdate = new Date(timestring)
     let hour = newdate.getHours();
     let timeofday = "";
@@ -310,7 +330,8 @@ export function getTimeFromDateObj(datein) {
 export function formatTimefromDB(timestring) {
     if (timestring) {
         timestring = timestring.replace(/-/g, '/');
-        timestring = `${timestring}-07:00`
+        let offset = getTimezoneUTCString(timestring)
+        timestring = `${timestring}-${offset}`
 
         let newdate = new Date(timestring)
         let hour = newdate.getHours();
@@ -389,7 +410,7 @@ export function formatDateforCalendarDisplay(datein) {
     let month = datein.getMonth() + 1;
     month = getmonthstring(month)
     let year = datein.getFullYear();
-    return (`${ month } ${ year }`)
+    return (`${month} ${year}`)
 }
 export function adjustdays(month, days, year) {
 
@@ -440,7 +461,8 @@ export function inputDateStringActiveIDTimein(dateobj, timein) {
         newday = `0${newday}`
     }
     let newdate = `${dateobj.getFullYear()}-${newmonth}-${newday}`
-    let eventdateobj = new Date(`${timein}-07:00`)
+    let offset = getTimezoneUTCString(timein)
+    let eventdateobj = new Date(`${timein}-${offset}`)
     let eventhours = eventdateobj.getHours();
     if (eventhours < 10) {
         eventhours = `0${eventhours}`
@@ -481,7 +503,8 @@ export function inputDateSecActiveIDTimein(dateencoded, timein) {
         newday = `0${newday}`
     }
     let newdate = `${dateobj.getFullYear()}-${newmonth}-${newday}`
-    let eventdateobj = new Date(`${timein}-07:00`)
+    let offset = getTimezoneUTCString(timein)
+    let eventdateobj = new Date(`${timein}-${offset}`)
     let eventhours = eventdateobj.getHours();
     if (eventhours < 10) {
         eventhours = `0${eventhours}`
@@ -499,7 +522,8 @@ export function inputDateSecActiveIDTimein(dateencoded, timein) {
 }
 export function TimeDBBaseDateObj(timein) {
     timein = timein.replace(/-/g, '/');
-    let datein = new Date(`${timein}-07:00`)
+    let offset = getTimezoneUTCString(timein)
+    let datein = new Date(`${timein}-${offset}`)
     let fullyear = datein.getFullYear();
     let month = datein.getMonth() + 1;
     let date = datein.getDate();
@@ -509,7 +533,9 @@ export function TimeDBBaseDateObj(timein) {
     if (month < 10) {
         month = `0${month}`
     }
-    let basedate = new Date(`${fullyear}/${month}/${date} 00:00:00-07:00`)
+
+
+    let basedate = new Date(`${fullyear}/${month}/${date} 00:00:00-${offset}`)
     return (basedate)
 }
 export function UTCTimefromCurrentDate() {
@@ -547,7 +573,7 @@ export function UTCTimefromCurrentDate() {
     if (seconds < 10) {
         seconds = `0${seconds}`
     }
-    let fakedate = new Date(`${year}/${month}/${day} ${hours}:${minutes}:${seconds}${sym}${2*offset}:00`)
+    let fakedate = new Date(`${year}/${month}/${day} ${hours}:${minutes}:${seconds}${sym}${2 * offset}:00`)
     year = fakedate.getFullYear();
     month = fakedate.getMonth() + 1;
     day = fakedate.getDate();
@@ -574,7 +600,8 @@ export function UTCTimefromCurrentDate() {
 }
 export function inputtimeDBoutputCalendarDaySeconds(datein) {
 
-    let dateobj = new Date(`${(datein.replace(/-/g, '/'))}-07:00`);
+    let offset = getTimezoneUTCString(datein)
+    let dateobj = new Date(`${(datein.replace(/-/g, '/'))}-${offset}`);
     let daymonth = dateobj.getMonth() + 1;
     if (daymonth < 10) {
         daymonth = `0${daymonth}`
@@ -582,13 +609,14 @@ export function inputtimeDBoutputCalendarDaySeconds(datein) {
     let dayyear = dateobj.getFullYear();
     let calendarday = dateobj.getDate();
 
-    let calendardateobj = new Date(`${dayyear}/${daymonth}/${calendarday} 00:00:00-07:00`);
+    let calendardateobj = new Date(`${dayyear}/${daymonth}/${calendarday} 00:00:00-${offset}`);
     return (calendardateobj.getTime());
 }
 export function convertTimeDBtoSec(timein) {
     if (timein) {
         timein = timein.replace(/-/g, '/');
-        let datein = new Date(`${timein}-07:00`);
+        let offset = getTimezoneUTCString(timein)
+        let datein = new Date(`${timein}-${offset}`);
         return (datein.getTime())
     }
 }
@@ -600,7 +628,8 @@ export function formatCurrency(dollar) {
 }
 export function formatTimeTest(timetest) {
     timetest = timetest.replace(/-/g, '/');
-    timetest = `${timetest}-07:00`
+    let offset = getTimezoneUTCString(timetest)
+    timetest = `${timetest}-${offset}`
     let timeobj = new Date(timetest)
 
     let day = timeobj.getDate();
@@ -617,7 +646,8 @@ export function formatTimeTest(timetest) {
 }
 export function formatDateFromTimeIn(datestring) {
     datestring = datestring.replace(/-/g, '/');
-    let dateobj = new Date(`${datestring}-07:00`);
+    let offset = getTimezoneUTCString(datestring)
+    let dateobj = new Date(`${datestring}-${offset}`);
 
     let month = Number(dateobj.getMonth());
     let datereport = "";
@@ -733,7 +763,9 @@ export function createBaseDate() {
     if (day < 10) {
         day = `0${day}`
     }
-    return (new Date(`${year}/${month}/${day} 00:00:00-07:00`))
+    let baseoffset = `${year}/${month}/${day} 00:00:00`
+    let offset = getTimezoneUTCString(baseoffset)
+    return (new Date(`${year}/${month}/${day} 00:00:00-${offset}`))
 }
 export function randomString(len) {
     var randomString = "";
