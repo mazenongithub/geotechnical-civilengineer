@@ -16,6 +16,9 @@ class Projects extends Component {
             address: "",
             city: "",
             title: "",
+            loaded: true,
+            countermessage: '',
+            counter: 0
         }
         this.clearactiveprojectid = this.clearactiveprojectid.bind(this)
     }
@@ -31,6 +34,7 @@ class Projects extends Component {
 
     }
     async getclient(clientid) {
+
         let response = await getClient(clientid);
         console.log(response)
         let myusermodel = UserModel(response.clientid, response.gender, response.firstname, response.lastname, response.contactcompany, response.contactaddress, response.contactcity, response.contactstate, response.contactzipcode, response.contactemail, response.contactphonenumber)
@@ -46,7 +50,7 @@ class Projects extends Component {
             }
 
         }
-        this.setState({ render: 'render' })
+
 
     }
     handleSingleFamily(event) {
@@ -117,8 +121,8 @@ class Projects extends Component {
 
 
         return (<div className="innerprojectlist-container">
-        
-        {this.showprojectlist(projectlist) }</div>)
+
+            {this.showprojectlist(projectlist)}</div>)
     }
     showprojectlist(projectlist) {
         // eslint-disable-next-line
@@ -127,7 +131,7 @@ class Projects extends Component {
                 let clientid = this.props.myusermodel.clientid;
                 return projectlist.map(myproject => {
                     return (<div className="innerprojectlist-element" key={`${randomString(6)}`}>
-                <Link className="project-link" to={`/${clientid}/projects/${myproject.projectid}`}>{myproject.projectnumber}-{myproject.projectaddress} {myproject.projectcity}</Link></div>)
+                        <Link className="project-link" to={`/${clientid}/projects/${myproject.projectid}`}>{myproject.projectnumber}-{myproject.projectaddress} {myproject.projectcity}</Link></div>)
                 })
             }
         }
@@ -270,20 +274,20 @@ class Projects extends Component {
         menus.sort(sortDecending);
         // eslint-disable-next-line
         menus.forEach(menu => {
-            showprojectmenus.push(<div className="projectid-container" key={`${randomString(6)}${menu}`}><button className="project-icon icon-left" onClick={event=>{this.useractivesubmenu(event,menu)}}>{this.getMenuIcon(menu)}</button>{menu}s</div>)
+            showprojectmenus.push(<div className="projectid-container" key={`${randomString(6)}${menu}`}><button className="project-icon icon-left" onClick={event => { this.useractivesubmenu(event, menu) }}>{this.getMenuIcon(menu)}</button>{menu}s</div>)
             if (menu !== 0) {
 
 
-                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}`}><button className="project-subicon" onClick={event=>{this.useractivesubmenu(event,menu+81)}}>{this.getSubMenuIcon(menu,menu+81,menu+99)}</button><label className="subprojectlabel">{menu  + 81} - {menu + 99} </label> </div>)
-                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu,menu+81,menu+99)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu + 81,menu + 99)} </div>)
-                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}${menu}`}><button className="project-subicon" onClick={event=>{this.useractivesubmenu(event,menu+61)}}>{this.getSubMenuIcon(menu,menu + 61,menu + 80)}</button><label className="subprojectlabel">{menu  + 61} - {menu + 80}</label> </div>)
-                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu,menu+61,menu+80)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu + 61,menu + 80)} </div>)
-                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}${menu}`}><button className="project-subicon" onClick={event=>{this.useractivesubmenu(event,menu+41)}}>{this.getSubMenuIcon(menu,menu + 41,menu + 60)}</button><label className="subprojectlabel">{menu  + 41} - {menu + 60}</label> </div>)
-                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu,menu+41,menu+60)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu + 41,menu + 60)} </div>)
-                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}${menu}`} ><button className="project-subicon" onClick={event=>{this.useractivesubmenu(event,menu+21)}}>{this.getSubMenuIcon(menu,menu + 21,menu + 40)}</button><label className="subprojectlabel">{menu  + 21} - {menu + 40}</label> </div>)
-                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu,menu+21,menu+40)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu + 21,menu + 40)} </div>)
-                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}${menu}`}><button className="project-subicon" onClick={event=>{this.useractivesubmenu(event,menu)}}>{this.getSubMenuIcon(menu,menu,menu + 20)}</button><label className="subprojectlabel">{menu} - {menu + 20}</label> </div>)
-                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu,menu,menu+20)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu,menu + 20)} </div>)
+                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}`}><button className="project-subicon" onClick={event => { this.useractivesubmenu(event, menu + 81) }}>{this.getSubMenuIcon(menu, menu + 81, menu + 99)}</button><label className="subprojectlabel">{menu + 81} - {menu + 99} </label> </div>)
+                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu, menu + 81, menu + 99)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu + 81, menu + 99)} </div>)
+                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}${menu}`}><button className="project-subicon" onClick={event => { this.useractivesubmenu(event, menu + 61) }}>{this.getSubMenuIcon(menu, menu + 61, menu + 80)}</button><label className="subprojectlabel">{menu + 61} - {menu + 80}</label> </div>)
+                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu, menu + 61, menu + 80)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu + 61, menu + 80)} </div>)
+                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}${menu}`}><button className="project-subicon" onClick={event => { this.useractivesubmenu(event, menu + 41) }}>{this.getSubMenuIcon(menu, menu + 41, menu + 60)}</button><label className="subprojectlabel">{menu + 41} - {menu + 60}</label> </div>)
+                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu, menu + 41, menu + 60)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu + 41, menu + 60)} </div>)
+                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}${menu}`} ><button className="project-subicon" onClick={event => { this.useractivesubmenu(event, menu + 21) }}>{this.getSubMenuIcon(menu, menu + 21, menu + 40)}</button><label className="subprojectlabel">{menu + 21} - {menu + 40}</label> </div>)
+                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu, menu + 21, menu + 40)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu + 21, menu + 40)} </div>)
+                showprojectmenus.push(<div className={`projectid-subcontainer ${this.activesubcontainer(menu)}`} key={`${randomString(10)}${menu}`}><button className="project-subicon" onClick={event => { this.useractivesubmenu(event, menu) }}>{this.getSubMenuIcon(menu, menu, menu + 20)}</button><label className="subprojectlabel">{menu} - {menu + 20}</label> </div>)
+                showprojectmenus.push(<div className={`projectid-projectlist ${this.activesubcontainer(menu)} ${this.activeprojectlist(menu, menu, menu + 20)}`} key={`${randomString(6)}${menu}`}>{this.getprojects(menu, menu + 20)} </div>)
 
             }
             else {
@@ -507,7 +511,7 @@ class Projects extends Component {
     handleclearprojecticon() {
         let clearicon = [];
         if (this.props.activeprojectid) {
-            clearicon.push(<div className="project-title"> <button className="project-button" onClick={event=>{this.clearactiveprojectid(event)}}> {clearProjectIDIcon()}</button></div>)
+            clearicon.push(<div className="project-title"> <button className="project-button" onClick={event => { this.clearactiveprojectid(event) }}> {clearProjectIDIcon()}</button></div>)
             clearicon.push(<div className="project-message-container">{this.getactivemessage()}  </div>)
 
         }
@@ -526,7 +530,28 @@ class Projects extends Component {
         return myproject;
 
     }
+
+    showloadingmessage() {
+        let counter = 0;
+
+        setInterval((int) => {
+
+            if (this.state.loaded === false) {
+                counter += .1;
+                this.setState({ counter })
+            } else {
+                clearInterval(int)
+            }
+
+
+
+        }, 100)
+
+
+    }
     async getmoreprojects() {
+        this.setState({ loaded: false })
+        this.showloadingmessage()
         let myproject = this.getlastproject();
 
         let lastprojectnumber = myproject.projectnumber;
@@ -534,6 +559,7 @@ class Projects extends Component {
         let clientid = this.props.match.params.clientid;
         let values = { clientid, projectnumber: lastprojectnumber, series: lastseries }
         let response = await getMoreProjects(values)
+
         let obj = this.props.projects;
         if (response.hasOwnProperty("projects")) {
 
@@ -544,15 +570,33 @@ class Projects extends Component {
 
         }
         this.props.reduxProjects(obj);
-        this.setState({ render: 'render' })
+        this.setState({ loaded: true })
+    }
+    getprojectmessage() {
+        if (this.state.loaded) {
+            let min = this.getmin();
+            let max = this.getmax();
+            return (`Viewing Projects ${min} - ${max} .. Click Get More to Load the next 50 projects `)
+
+        }
+
+    }
+    getcountermessage() {
+        if (!this.state.loaded) {
+            let counter = this.state.counter;
+            return (`Loading ${Number(counter).toFixed(2)} sec`)
+        }
     }
     handleloadmoreprojects() {
         if (this.props.projects) {
             if (this.props.projects.hasOwnProperty("length")) {
                 if (this.props.projects.length >= 50) {
                     return (
-                        <div className="project-title">
-                        <button className="project-button" onClick={event=>{this.getmoreprojects(event)}}>{getmoreprojectsIcon()} </button> </div>)
+                        <div className="project-message-container">
+                            <button className="project-button" onClick={event => { this.getmoreprojects(event) }}>{getmoreprojectsIcon()} </button> <br />
+                            {this.getprojectmessage()}
+                            {this.getcountermessage()}
+                        </div>)
                 }
             }
         }
@@ -561,30 +605,30 @@ class Projects extends Component {
         if (this.props.myusermodel) {
             if (this.props.myusermodel.hasOwnProperty("clientid")) {
                 return (<div className="outerproject-container">
-            <div className="project-container">
-            <div className="project-title">My Projects </div>
-            {this.handleclearprojecticon()}
-            {this.handleloadmoreprojects()}
-            <div className="project-scope">
-                <ul className="none">
-                    <li><button className="proposed-radio" onClick={event=>{this.handleSingleFamily(event)}}><label className="radio-label">{this.getsinglefamily()} </label></button>New Single Family Residential </li>
-                    <li><button className="proposed-radio" onClick={event=>{this.handleAddition(event)}}><label className="radio-label">{this.getaddition()}</label></button> Addition to Existing Residence </li>
-                    <li><button className="proposed-radio" onClick={event=>{this.handleSubdivision(event)}}><label className="radio-label">{this.getsubdivision()}</label> </button> Multi Housing Unit Development </li>
-                    <li><button className="proposed-radio" onClick={event=>{this.handleOther(event)}}><label className="radio-label">{this.getother()}</label></button> Other </li>
-                </ul>
-            </div>
-            <div className="project-title-container">Project Title  <br/><input type="text" className="project-field" value={this.gettitle()} onChange={event=>{this.handletitle(event.target.value)}} /></div>
-            <div className="project-address-container"> Address  <br/> <input type="text" className="project-field" value={this.getaddress()} onChange={event=>{this.handleaddress(event.target.value)}} /></div>
-            <div className="project-location-container">City  <br/><input type="text" className="project-field" value={this.getcity()} onChange={event=>{this.handlecity(event.target.value)}} /> </div>
-            <div className="project-location-container">State  <br/><input type="text" className="project-field" value="California" /> </div>
-            <div className="project-scope-container"> Scope of Work  <br/> <textarea id="newprojectscope"className="project-field" onChange={event=>{this.handlescope(event.target.value)}} value={this.getscope()}> </textarea></div>
-            <div className="project-message-container">{this.state.message} </div>
-            <div className="project-row-1a"><button id="btnsaveprojects" onClick={event=>{this.createproject(event)}}>{clicktoSave()} </button></div>
-           
-        </div>
-        {this.showprojectmenus()}
-        
-    </div>)
+                    <div className="project-container">
+                        <div className="project-title">My Projects </div>
+                        {this.handleclearprojecticon()}
+                        {this.handleloadmoreprojects()}
+                        <div className="project-scope">
+                            <ul className="none">
+                                <li><button className="proposed-radio" onClick={event => { this.handleSingleFamily(event) }}><label className="radio-label">{this.getsinglefamily()} </label></button>New Single Family Residential </li>
+                                <li><button className="proposed-radio" onClick={event => { this.handleAddition(event) }}><label className="radio-label">{this.getaddition()}</label></button> Addition to Existing Residence </li>
+                                <li><button className="proposed-radio" onClick={event => { this.handleSubdivision(event) }}><label className="radio-label">{this.getsubdivision()}</label> </button> Multi Housing Unit Development </li>
+                                <li><button className="proposed-radio" onClick={event => { this.handleOther(event) }}><label className="radio-label">{this.getother()}</label></button> Other </li>
+                            </ul>
+                        </div>
+                        <div className="project-title-container">Project Title  <br /><input type="text" className="project-field" value={this.gettitle()} onChange={event => { this.handletitle(event.target.value) }} /></div>
+                        <div className="project-address-container"> Address  <br /> <input type="text" className="project-field" value={this.getaddress()} onChange={event => { this.handleaddress(event.target.value) }} /></div>
+                        <div className="project-location-container">City  <br /><input type="text" className="project-field" value={this.getcity()} onChange={event => { this.handlecity(event.target.value) }} /> </div>
+                        <div className="project-location-container">State  <br /><input type="text" className="project-field" value="California" /> </div>
+                        <div className="project-scope-container"> Scope of Work  <br /> <textarea id="newprojectscope" className="project-field" onChange={event => { this.handlescope(event.target.value) }} value={this.getscope()}> </textarea></div>
+                        <div className="project-message-container">{this.state.message} </div>
+                        <div className="project-row-1a"><button id="btnsaveprojects" onClick={event => { this.createproject(event) }}>{clicktoSave()} </button></div>
+
+                    </div>
+                    {this.showprojectmenus()}
+
+                </div>)
             }
             else {
                 return (<span>&nbsp; </span>)
